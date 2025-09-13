@@ -24,7 +24,7 @@ Thư viện prompts tiếng Việt dành cho AI và sáng tạo nội dung. Khá
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/vietnamese-prompts.git
+git clone https://github.com/LockMan04/vietnamese-prompts.git
 
 # Di chuyển vào thư mục project
 cd vietnamese-prompts
