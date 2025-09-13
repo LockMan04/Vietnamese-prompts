@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .card-hover {
+    @apply transform transition-all duration-300 hover:scale-105 hover:shadow-xl;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900;
+  }
+  
+  .glass-effect {
+    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-white/20 dark:border-gray-700/50;
+  }
+  
+  .btn-primary {
+    @apply bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-2 rounded-lg font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200;
+  }
+  
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Ensure consistent card heights */
+  .prompt-card {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Better text truncation */
+  .truncate-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Fix for gradient text in all browsers */
+  .bg-clip-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+
+  .text-transparent {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Ensure proper whitespace handling */
+  .whitespace-nowrap {
+    white-space: nowrap;
+  }
+
+  /* Filter button active state */
+  .filter-active {
+    background: linear-gradient(135deg, #0c97fa, #16e1f5);
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(12, 151, 250, 0.3);
+    transform: scale(1.05);
+  }
+
+  /* Animation keyframes for filtering */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-from-bottom {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Animate-in utility classes */
+  .animate-in {
+    animation-fill-mode: both;
+  }
+
+  .fade-in {
+    animation-name: fade-in;
+  }
+
+  .slide-in-from-bottom-4 {
+    animation-name: slide-in-from-bottom;
+  }
+
+  .scale-in {
+    animation-name: scale-in;
+  }
+
+  .duration-300 {
+    animation-duration: 300ms;
+  }
+
+  .duration-500 {
+    animation-duration: 500ms;
+  }
+
+  .duration-700 {
+    animation-duration: 700ms;
+  }
+
+  /* Smooth filtering transition */
+  .filtering-transition {
+    transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+
+  .filtering-transition.filtering {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+
+  /* Staggered animation delays */
+  .stagger-1 { animation-delay: 50ms; }
+  .stagger-2 { animation-delay: 100ms; }
+  .stagger-3 { animation-delay: 150ms; }
+  .stagger-4 { animation-delay: 200ms; }
+  .stagger-5 { animation-delay: 250ms; }
+}
+
+/* Ẩn thanh scroll chung */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE và Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari */
+}

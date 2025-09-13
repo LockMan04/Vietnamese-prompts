@@ -1,0 +1,174 @@
+/* ==========================================================================
+   Vietnamese Prompts - Color System
+   ========================================================================== */
+
+:root {
+  /* Primary Brand Colors - Custom Gradient */
+  --vp-primary-start: #0c97fa;
+  --vp-primary-end: #16e1f5;
+  --vp-primary-gradient: linear-gradient(135deg, var(--vp-primary-start), var(--vp-primary-end));
+  
+  /* Primary Colors with Opacity */
+  --vp-primary-10: rgba(12, 151, 250, 0.1);
+  --vp-primary-20: rgba(12, 151, 250, 0.2);
+  --vp-primary-30: rgba(12, 151, 250, 0.3);
+  --vp-secondary-10: rgba(22, 225, 245, 0.1);
+  --vp-secondary-20: rgba(22, 225, 245, 0.2);
+  --vp-secondary-30: rgba(22, 225, 245, 0.3);
+
+  /* Gradient Variations */
+  --vp-gradient-hover: linear-gradient(135deg, #0a85e0, #14c9db);
+  --vp-gradient-light: linear-gradient(135deg, var(--vp-primary-20), var(--vp-secondary-20));
+  --vp-gradient-light-hover: linear-gradient(135deg, var(--vp-primary-30), var(--vp-secondary-30));
+
+  /* Status Colors */
+  --vp-success: #10a37f;
+  --vp-error: #ef4444;
+  --vp-warning: #f59e0b;
+  --vp-info: #3b82f6;
+
+  /* Semantic Colors */
+  --vp-text-primary: #0c97fa;
+  --vp-text-secondary: #16e1f5;
+  --vp-border-primary: #16e1f5;
+  --vp-border-secondary: #0c97fa;
+
+  /* Component Specific Colors */
+  --vp-loader-color: var(--vp-primary-start);
+  --vp-button-primary: var(--vp-primary-gradient);
+  --vp-button-primary-hover: var(--vp-gradient-hover);
+
+  /* Platform Colors */
+  --vp-platform-chatgpt: #10a37f;
+  --vp-platform-grok: #1da1f2;
+  --vp-platform-claude: #cc785c;
+  --vp-platform-copilot: #0078d4;
+  --vp-platform-perplexity: #1fb6ff;
+  --vp-platform-youcom: #8b5cf6;
+  --vp-platform-gemini: #4285f4;
+
+  /* Shadows with Brand Colors */
+  --vp-shadow-primary: 0 10px 15px -3px rgba(12, 151, 250, 0.25), 0 4px 6px -2px rgba(12, 151, 250, 0.15);
+  --vp-shadow-secondary: 0 10px 15px -3px rgba(22, 225, 245, 0.25), 0 4px 6px -2px rgba(22, 225, 245, 0.15);
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+.vp-text-primary {
+  color: var(--vp-text-primary);
+}
+
+.vp-text-secondary {
+  color: var(--vp-text-secondary);
+}
+
+.vp-bg-gradient {
+  background: var(--vp-primary-gradient);
+}
+
+.vp-bg-gradient-hover {
+  background: var(--vp-gradient-hover);
+}
+
+.vp-bg-light {
+  background: var(--vp-gradient-light);
+}
+
+.vp-bg-light-hover {
+  background: var(--vp-gradient-light-hover);
+}
+
+.vp-border-primary {
+  border-color: var(--vp-border-primary);
+}
+
+.vp-border-secondary {
+  border-color: var(--vp-border-secondary);
+}
+
+.vp-shadow-primary {
+  box-shadow: var(--vp-shadow-primary);
+}
+
+.vp-shadow-secondary {
+  box-shadow: var(--vp-shadow-secondary);
+}
+
+/* ==========================================================================
+   Component Specific Styles
+   ========================================================================== */
+
+/* Button Primary */
+.btn-vp-primary {
+  background: var(--vp-button-primary);
+  color: white;
+  border: none;
+  transition: background 0.2s ease;
+}
+
+.btn-vp-primary:hover {
+  background: var(--vp-button-primary-hover);
+}
+
+/* Loading Spinner */
+.vp-loader {
+  color: var(--vp-loader-color);
+}
+
+/* Contribution Cards */
+.vp-contribution-easy {
+  background: var(--vp-secondary-20);
+  color: var(--vp-text-secondary);
+  border-left-color: var(--vp-border-primary);
+}
+
+.vp-contribution-advanced {
+  background: var(--vp-primary-20);
+  color: var(--vp-text-primary);
+  border-left-color: var(--vp-border-secondary);
+}
+
+/* Footer Logo */
+.vp-footer-logo {
+  background: var(--vp-primary-gradient);
+}
+
+.vp-footer-logo-glow {
+  background: var(--vp-primary-gradient);
+  opacity: 0.3;
+  filter: blur(4px);
+}
+
+/* Filter Icons */
+.vp-filter-icon-primary {
+  color: var(--vp-text-primary);
+  background: var(--vp-primary-10);
+}
+
+.vp-filter-icon-secondary {
+  color: var(--vp-text-secondary);
+}
+
+/* Selected States */
+.vp-selected {
+  background: var(--vp-primary-gradient);
+  box-shadow: var(--vp-shadow-primary);
+  color: white;
+}
+
+/* Dropdown Platform Items */
+.vp-platform-item {
+  transition: background-color 0.2s ease;
+}
+
+.vp-platform-item:hover {
+  background-color: var(--vp-primary-10);
+}
+
+/* User Badge */
+.vp-user-badge {
+  background: var(--vp-primary-10);
+  color: var(--vp-text-primary);
+}
