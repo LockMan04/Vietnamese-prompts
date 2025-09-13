@@ -1,0 +1,134 @@
+id,category,title,prompt,type,image,description,tags,contributor
+1,"3D Figurine","Mô hình tỉ lệ 1/7 phong cách thương mại","Tạo một mô hình nhân vật tỉ lệ 1/7 dựa trên bức hình, phong cách hiện thực, đặt trong môi trường thật. Mô hình được đặt trên bàn máy tính. Mô hình có đế acrylic trong suốt hình tròn, không có chữ trên đế. Màn hình máy tính hiển thị quá trình dựng mô hình bằng Zbrush của mô hình này. Bên cạnh màn hình là hộp đồ chơi phong cách BANDAI được in artwork gốc. Bao bì có minh họa phẳng hai chiều.","text-to-image","/images/prompt001-020/prompt001.png","Prompt này tạo hình ảnh mô hình nhân vật tỉ lệ 1/7 phong cách thương mại, đặt trong môi trường bàn máy tính, với đế acrylic trong suốt, hộp đồ chơi phong cách BANDAI, và màn hình hiển thị quá trình dựng Zbrush.","figurine, 1/7 scale, realistic, Zbrush, BANDAI, acrylic base, toy packaging","LockMan04"
+2,"3D Figurine","Hộp đồ chơi Figure","Một mô hình action figure toàn thân của một nhân vật, làm nghề [nghề nghiệp]. Bao bì blister pack nguyên bản, phong cách đồ chơi 3D. Trên thẻ bao bì, tên [tên] được viết nổi bật, với [vai trò] bên dưới. Nhân vật mặc trang phục đặc trưng của nghề nghiệp, kèm theo các phụ kiện như dụng cụ/đồ vật liên quan đến nghề. Thẻ bao bì có [thiết kế minh họa]. Phong cách bổ sung nếu cần. Kết xuất quang thực, ánh sáng phòng thu, lấy nét rõ bao bì và mô hình. --ar 2:3
+","text-to-image","/images/prompt001-020/prompt002.png","Prompt này tạo hình ảnh action figure trong blister pack, với nghề nghiệp làm trọng tâm (ảnh hưởng đến trang phục và phụ kiện), tên nhân vật rõ ràng, thiết kế bao bì minh họa, phong cách đồ chơi 3D và render quang thực.","action figure, blister pack, toy design, 3D, photorealistic, accessories, packaging","LockMan04"
+3,"3D Diorama","Cảnh văn phòng phong cách sống kỹ thuật số","Một diorama phong cách sống kỹ thuật số làm nổi bật một văn phòng nhỏ. Cảnh này có một nhân vật, tạo dáng thực tế với góc mặt được giữ nguyên như trong hình ảnh tham chiếu, trang phục trẻ trung, cá tính, ngồi trên ghế làm việc với tư thế và góc mặt tương xứng. Trong cảnh diorama, sàn gỗ kết hợp với tường gỗ sồi sáng màu, tạo nên bầu không khí ấm áp và hấp dẫn. Văn phòng được trang bị bàn làm việc bằng kim loại đánh bóng có màn hình máy tính, tách cà phê cùng một số đồ nội thất như catalog, tập hồ sơ… bố cục tổng thể gợi ý một không gian làm việc nhỏ gọn, hiệu quả. Một biển báo màu vàng có dòng chữ “TÊN + NGÀNH NGHỀ”.","text-to-image","/images/prompt001-020/prompt003.png","Prompt này tạo cảnh diorama văn phòng kỹ thuật số nhỏ gọn, với nhân vật có góc mặt và dáng ngồi tự nhiên, sàn gỗ và tường gỗ sáng màu, bàn kim loại, màn hình máy tính, phụ kiện văn phòng và biển báo cá nhân hóa “TÊN + NGÀNH NGHỀ”.","diorama, văn phòng, phong cách sống, quang thực, gỗ, nhân vật, không gian làm việc, biển báo","LockMan04"
+4,Phân tích thương hiệu cá nhân,Phân tích điểm mạnh và định vị,"Tôi là [mô tả công việc hiện tại của bạn]. Hãy phân tích 5 điểm mạnh độc đáo mà tôi có thể không nhận ra và đề xuất 3 cách định vị thương hiệu cá nhân dựa trên những điểm mạnh này. Mỗi cách định vị phải bao gồm: (1) nhóm đối tượng cụ thể, (2) vấn đề duy nhất tôi giải quyết, (3) lời hứa giá trị trong 1 câu.",text,,"Prompt này giúp khám phá điểm mạnh ẩn của bản thân và đưa ra các gợi ý định vị thương hiệu cá nhân rõ ràng, phù hợp với từng nhóm đối tượng và giá trị cam kết.","phân tích, thương hiệu cá nhân, điểm mạnh, định vị, giá trị, đối tượng mục tiêu",LockMan04
+5,Tối ưu hóa hồ sơ cá nhân,Hồ sơ LinkedIn,"Hãy viết lại hồ sơ LinkedIn của tôi để tăng mạnh lượt xem và kết nối chất lượng hơn. Bao gồm:  
+1. Headline nổi bật, mang tính thu hút, không chỉ là chức danh công việc.  
+2. Summary 3 đoạn theo công thức: Vấn đề + Giải pháp + Kết quả.  
+3. Mô tả kinh nghiệm nhấn mạnh thành tựu và kết quả đạt được thay vì liệt kê nhiệm vụ.  
+4. Phần kỹ năng (Skills) với các từ khóa phù hợp ngành nghề.  
+5. Đề xuất 10 chủ đề nội dung có thể đăng định kỳ để xây dựng thương hiệu cá nhân.  
+
+Thông tin hiện tại: [dán hồ sơ LinkedIn hoặc mô tả ngắn gọn].","text",,"Prompt này hướng dẫn cách tối ưu hóa hồ sơ LinkedIn toàn diện: từ headline, summary, kinh nghiệm, kỹ năng đến kế hoạch nội dung đăng tải, nhằm thu hút nhiều lượt xem và kết nối chất lượng hơn.","LinkedIn, tối ưu hồ sơ, thương hiệu cá nhân, kỹ năng, headline, summary, kinh nghiệm, nội dung
+",LockMan04
+6,Tạo nội dung học tập,Bài học cơ bản thân thiện cho người mới bắt đầu,"Tạo một bài học cơ bản thân thiện với người mới bắt đầu về [chèn môn học/kỹ năng].  
+Bao gồm:  
+1. Phần giới thiệu và tổng quan về các khái niệm chính quan trọng đối với khóa học này.  
+2. Ví dụ thực tế về tác động, giá trị hoặc sự liên quan của môn học/kỹ năng này đối với thế giới.  
+3. Danh sách 10 sự thật hoặc kiến thức chính mà bất kỳ ai muốn học môn học/kỹ năng này đều phải biết.  
+",text,,"Prompt này giúp xây dựng một bài học cơ bản thân thiện với người mới bắt đầu, có phần giới thiệu, ví dụ thực tế và danh sách 10 sự thật cốt lõi cần biết.","bài học, cơ bản, người mới bắt đầu, giáo dục, ví dụ thực tế, kiến thức chính, kỹ năng",LockMan04
+7,Tạo nội dung học tập,Tạo bài kiểm tra nhanh,"Vui lòng tạo 10 câu hỏi để kiểm tra kiến thức của tôi về [môn học]. Hãy hỏi tôi từng câu một.  
+Khi kết thúc, báo cáo điểm số của tôi.  
+- Với mỗi câu sai, giải thích lý do tại sao tôi sai.  
+- Với mỗi câu đúng, cung cấp thêm thông tin hữu ích hoặc thú vị để khuyến khích học tập sâu hơn về chủ đề đó.  
+",text,,"Prompt này giúp tạo một bài kiểm tra nhanh để đánh giá kiến thức về bất kỳ môn học nào, vừa chấm điểm vừa đưa ra giải thích và mở rộng kiến thức cho người học.","bài kiểm tra, trắc nghiệm, học tập, phản hồi, giáo dục, luyện tập, kiến thức",LockMan04
+8,Đánh giá & phản hồi học tập,"Phản hồi và cải thiện bài luận
+","Vui lòng đánh giá và xem lại bài luận này, được viết cho khóa học [tên bằng cấp] của tôi.  
+- Đánh giá độ chính xác về nội dung và mức độ giải quyết các chủ đề chính quan trọng đối với bài luận.  
+- Đưa ra điểm dự đoán cho bài luận.  
+- Đề xuất cách cải thiện điểm số, trình bày dưới dạng các gạch đầu dòng ngắn gọn, dễ áp dụng.  
+
+[chèn nội dung bài luận]
+",text,,"Prompt này giúp người học nhận phản hồi khách quan về bài luận: kiểm tra nội dung, chấm điểm dự đoán và đưa ra các đề xuất cải thiện cụ thể.
+","bài luận, phản hồi, chấm điểm, cải thiện, học tập, viết học thuật",LockMan04
+9,Nghiên cứu thị trường,Chiến lược gia nghiên cứu thị trường (mô phỏng end-to-end),"Bạn là một chiến lược gia nghiên cứu thị trường đẳng cấp thế giới với kinh nghiệm sâu rộng về tâm lý học người tiêu dùng, thông tin cạnh tranh và phân tích sự phù hợp sản phẩm-thị trường.
+<Context>
+Người dùng đang lên kế hoạch nghiên cứu một sản phẩm, dịch vụ hoặc ngành cụ thể và muốn thu thập thông tin chi tiết sử dụng cả phương pháp định tính và định lượng. Nhiệm vụ của bạn là mô phỏng toàn bộ quá trình nghiên cứu thị trường chuyên nghiệp với sự hỗ trợ của AI, được điều chỉnh theo trọng tâm mà người dùng đã chọn.
+</Context>
+<Instructions>
+1. Dựa trên đầu vào của người dùng, bắt đầu bằng việc xác định mục tiêu và phạm vi nghiên cứu.
+2. Đề xuất các phương pháp nghiên cứu phù hợp nhất (định tính, định lượng, hoặc kết hợp) dựa trên chủ đề.
+3. Liệt kê các bộ dữ liệu công khai chính, công cụ hoặc nền tảng nơi có thể thu thập dữ liệu cho chủ đề này.
+4. Xây dựng 2-3 persona khách hàng chi tiết cao liên quan đến thị trường của người dùng.
+5. Xác định top 5 đối thủ cạnh tranh trực tiếp và gián tiếp với hồ sơ ngắn gọn và USP.
+6. Làm nổi bật ít nhất 3 khoảng trống thị trường tiềm năng hoặc cơ hội chưa được phục vụ dựa trên sự liên kết cạnh tranh và persona.
+7. Trình bày tất cả phát hiện theo định dạng có tổ chức với phân chia phù hợp và dấu đầu dòng.
+</Instructions>
+<Constraints>
+- Không sử dụng truy cập web thời gian thực; mô phỏng dữ liệu hoặc chỉ đề xuất các nguồn công khai đáng tin cậy.
+- Giữ lời giải thích ngắn gọn nhưng sâu sắc; tránh thuật ngữ không cần thiết.
+- Mỗi persona phải bao gồm: tên, tuổi, nghề nghiệp, mục tiêu, điểm đau, kỳ vọng sản phẩm.
+- Hồ sơ đối thủ cạnh tranh nên tập trung vào sự khác biệt.
+- Khoảng trống thị trường phải cụ thể, có thể hành động, và dựa trên nhu cầu chưa được đáp ứng của persona hoặc điểm mù của đối thủ cạnh tranh.
+</Constraints>
+<Output Format>
+<Báo cáo Nghiên cứu Thị trường>
+1. Mục tiêu & Phạm vi
+2. Phương pháp Đề xuất
+3. Nguồn Dữ liệu Công khai
+4. Persona Khách hàng
+5. Phân tích Đối thủ Cạnh tranh
+6. Khoảng trống Thị trường & Cơ hội
+</Báo cáo Nghiên cứu Thị trường>
+</Output Format>
+<Reasoning>
+Áp dụng Theory of Mind để phân tích yêu cầu của người dùng, xem xét cả ý định logic và âm hưởng cảm xúc. Sử dụng Strategic Chain-of-Thought và System 2 Thinking để cung cấp các phản hồi dựa trên bằng chứng, tinh tế, cân bằng giữa độ sâu và sự rõ ràng.
+</Reasoning>
+<User Input>
+Trả lời với: ""Vui lòng nhập chủ đề nghiên cứu thị trường hoặc ngách của bạn và tôi sẽ bắt đầu quá trình,"" sau đó chờ người dùng cung cấp yêu cầu nghiên cứu thị trường cụ thể của họ.
+</User Input>
+",text,,"Prompt nhập vai chuyên gia để mô phỏng toàn bộ quy trình nghiên cứu thị trường: xác định mục tiêu & phạm vi, chọn phương pháp, liệt kê nguồn dữ liệu, xây dựng persona, phân tích đối thủ, nêu khoảng trống thị trường và trình bày theo cấu trúc báo cáo. Không dùng web thời gian thực.Prompt nhập vai chuyên gia để mô phỏng toàn bộ quy trình nghiên cứu thị trường: xác định mục tiêu & phạm vi, chọn phương pháp, liệt kê nguồn dữ liệu, xây dựng persona, phân tích đối thủ, nêu khoảng trống thị trường và trình bày theo cấu trúc báo cáo. Không dùng web thời gian thực.
+","nghiên cứu thị trường, chiến lược, persona, đối thủ cạnh tranh, khoảng trống thị trường, định tính, định lượng, USP, báo cáo, phân tích khách hàng
+",LockMan04
+10,"Chỉnh sửa & tạo ảnh
+","Chuyển đổi ảnh sang góc nhìn từ trên xuống
+","Hãy chuyển đổi bức ảnh hiện có sang góc nhìn từ trên xuống (top-down view), giữ nguyên tỷ lệ và độ chính xác về không gian.  
+- Bảo toàn chi tiết chính của cảnh vật và phối cảnh tổng thể.  
+- Làm nổi bật rõ cấu trúc, đường biên hoặc khu vực chính trong ảnh.  
+- Đánh dấu vị trí của nhiếp ảnh gia ban đầu trong bức ảnh bằng một ký hiệu hoặc điểm đánh dấu dễ nhận biết.  
+- Đảm bảo hình ảnh đầu ra có độ rõ nét cao, phối cảnh chính xác, ánh sáng và màu sắc cân bằng để dễ phân tích.  
+","text-to-image",/images/prompt001-020/prompt010.png,"Prompt này tạo ảnh từ góc nhìn trên cao (top-down), đồng thời đánh dấu vị trí người chụp để phục vụ cho phân tích bố cục, không gian hoặc minh họa báo cáo.
+","chỉnh sửa ảnh, góc nhìn trên cao, phân tích bố cục, vị trí nhiếp ảnh gia, top-down view
+",LockMan04
+11,"Tạo cảnh nhân vật & tư thế
+","Điều khiển vẽ tay tư thế nhân vật
+","Hãy tạo một hình ảnh với nhân vật đang chiến đấu, sử dụng tư thế được mô tả trong hình.  
+- Giữ đúng dáng, góc và tương tác cơ thể theo tư thế tham chiếu.  
+- Thêm phông nền phù hợp (ví dụ: đấu trường, đường phố, bối cảnh giả tưởng) để làm cho cảnh trở nên sinh động.  
+- Kết hợp các yếu tố tương tác trong cảnh (ví dụ: bụi bay, ánh sáng va chạm, hiệu ứng động tác) để tăng cảm giác hành động.  
+- Đảm bảo bố cục tổng thể rõ ràng, hai nhân vật nổi bật, không gian có chiều sâu.  
+- Tỉ lệ ảnh đầu ra: 16:9.  
+","text-to-image",/images/prompt001-020/prompt011.png,"Prompt này tạo cảnh chiến đấu của nhiều nhân vật dựa trên tư thế tham chiếu, có nền cảnh sinh động, hiệu ứng tương tác và bố cục ngang 16:9.
+","nhân vật, tư thế, chiến đấu, vẽ tay, phông nền, hiệu ứng, hành động, 16:9
+",LockMan04
+12,"Chỉnh sửa ảnh tự động
+","Tăng cường màu sắc & ánh sáng
+","Bức ảnh này quá đơn điệu và nhạt nhòa. Hãy chỉnh sửa để nó trở nên sống động và hấp dẫn hơn:  
+- Tăng độ tương phản để làm nổi bật chi tiết.  
+- Tăng cường độ bão hòa màu sắc để hình ảnh giàu màu hơn.  
+- Điều chỉnh ánh sáng để làm bức ảnh sáng rõ và cân bằng hơn.  
+- Cắt xén hoặc loại bỏ những chi tiết gây rối, làm hỏng bố cục.  
+- Giữ cho hình ảnh cuối cùng có cảm giác tự nhiên, giàu sức sống và đẹp mắt.  
+","text-to-image",/images/prompt001-020/prompt012.png,"Prompt này giúp cải thiện ảnh tự động: tăng tương phản, chỉnh màu, tối ưu ánh sáng, cắt bỏ chi tiết thừa để tạo hình ảnh sống động và giàu sức hút hơn.
+","chỉnh sửa ảnh, tăng tương phản, tăng màu sắc, ánh sáng, cải thiện bố cục, làm đẹp ảnh",LockMan04
+13,Tạo mô hình 3D,"Trích xuất tòa nhà & tạo ảnh isometric
+","Hãy tạo hình ảnh của một tòa nhà ở chế độ ban ngày, với góc nhìn isometric.  
+- Chỉ hiển thị phần tòa nhà, không bao gồm người, xe cộ hay cảnh vật phụ xung quanh.  
+- Giữ chi tiết kiến trúc rõ ràng, cân đối và đẹp mắt.  
+- Đảm bảo ánh sáng ban ngày tự nhiên, màu sắc hài hòa.  
+- Kết xuất hình ảnh với cảm giác mô hình 3D đẳng cấp, mang tính trình bày và minh họa chuyên nghiệp.  
+","text-to-image",/images/prompt001-020/prompt013.png,"Prompt này giúp trích xuất tòa nhà từ cảnh gốc và tạo hình ảnh isometric vào ban ngày, tập trung vào chi tiết kiến trúc, phù hợp cho minh họa hoặc mô hình 3D.
+","tòa nhà, 3D, isometric, ban ngày, kiến trúc, mô hình, minh họa
+",LockMan04
+14,"Chuyển đổi góc nhìn
+","Vẽ cảnh từ hướng mũi tên đỏ
+","Hãy vẽ lại cảnh thực tế được nhìn thấy từ vị trí vòng tròn đỏ, theo hướng của mũi tên.  
+- Xác định vị trí vòng tròn đỏ như điểm quan sát (camera view).  
+- Vẽ lại toàn cảnh phía trước theo đúng góc mũi tên chỉ.  
+- Giữ tỷ lệ, phối cảnh và các đối tượng thực tế trong vùng nhìn.  
+- Ưu tiên độ rõ nét, ánh sáng và chi tiết để giống như tầm nhìn thật ngoài đời.  
+",text-to-image,/images/prompt001-020/prompt014.png,"Prompt này tái tạo khung cảnh thực tế từ vị trí vòng tròn đỏ, theo hướng mũi tên chỉ, giống như góc nhìn camera trong thế giới thật.","góc nhìn, phối cảnh, mũi tên, vòng tròn đỏ, cảnh thực tế, tầm nhìn
+",LockMan04
+15,"Chỉnh sửa & tạo ảnh","Biến đổi nhân vật thành sticker","
+Hãy biến đổi nhân vật này thành một sticker có viền trắng 
+- Phong cách minh họa web (web illustration style), trẻ trung và vui nhộn. 
+- Giữ đường nét rõ ràng, màu sắc sáng, đơn giản hóa chi tiết để dễ nhìn. 
+- Bố cục tổng thể cân đối, dễ sử dụng cho sticker hoặc đồ họa web.","text-to-image","/images/prompt001-020/prompt015.png","Prompt này giúp biến đổi nhân vật thành sticker phong cách minh họa web, trẻ trung, vui nhộn, với đường nét rõ ràng, màu sắc sáng và chi tiết đơn giản hóa.","sticker, minh họa web, trẻ trung, vui nhộn, đường nét rõ ràng, màu sắc sáng, đồ họa web","LockMan04"
+16,"Chỉnh sửa & tạo ảnh","9 avatar lưới 3x3 - thay đổi kiểu tóc","Tạo 9 ảnh đại diện (avatar) sắp xếp trong bố cục lưới 3x3. Mỗi avatar giữ nguyên khuôn mặt và phong cách nhất quán, nhưng thay đổi kiểu tóc khác nhau theo thứ tự: ngắn, dài, xoăn, thẳng, buộc đuôi ngựa, búi, tết, gợn sóng, dựng đứng. Đảm bảo bố cục lưới cân đối, nền đơn giản, ánh sáng và màu sắc hài hòa, các biểu cảm nhẹ nhàng đồng bộ và hình ảnh phù hợp để sử dụng làm avatar hoặc avatar mạng xã hội.","text-to-image","/images/prompt001-020/prompt016.png","Prompt này tạo một lưới 3x3 gồm 9 avatar cùng khuôn mặt nhưng biến thể kiểu tóc khác nhau, phù hợp cho avatar mạng xã hội hoặc ứng dụng, bố cục cân đối và thị giác hài hòa.","avatar, lưới 3x3, tóc ngắn, tóc dài, tóc xoăn, tóc thẳng, đuôi ngựa, búi tóc, tóc tết, tóc gợn sóng, tóc dựng đứng, avatar mạng xã hội, portrait","LockMan04"
+17,"Tạo video ASMR","Video ASMR cắt thủy tinh","Video ASMR siêu thực 8K quay cảnh bàn tay người cắt một tác phẩm điêu khắc thủy tinh hình [vật thể] đặt trên thớt gỗ. Tác phẩm thủy tinh được chế tác như pha lê thổi. Dưới ánh sáng điện ảnh, nó lấp lánh như hổ phách được mài nhẵn. Máy quay đặt ở góc cận cảnh cực độ (extreme close-up) với độ sâu trường ảnh nông, tập trung vào bàn tay và chất liệu thủy tinh bóng loáng. Con dao di chuyển mượt mà, chậm rãi, thực hiện ba lát cắt sạch sẽ, rõ ràng với âm thanh tinh khiết – giống như đang cắt pha lê mịn. Mỗi lát cắt tách ra nhẹ nhàng, lấp lánh như thủy tinh vàng được chạm khắc. Không có yếu tố gây xao nhãng ở hậu cảnh. Góc quay ASMR từ trên xuống (top-down) đặc trưng được sử dụng, giống phong cách các video chuyên nghiệp về cắt thực phẩm. Bầu không khí yên tĩnh và dễ chịu, nhấn mạnh vào cảm giác xúc giác và âm thanh của thủy tinh khi bị cắt.","text-to-video","/images/prompt001-020/prompt017.png","Prompt này tạo video ASMR siêu thực 8K về cảnh cắt tác phẩm thủy tinh, với góc cận cảnh, âm thanh tinh khiết và bầu không khí yên tĩnh, nhấn mạnh cảm giác xúc giác và thị giác.","ASMR, video siêu thực, 8K, cắt thủy tinh, pha lê thổi, cận cảnh, top-down, âm thanh tinh khiết, xúc giác","LockMan04"
+18,"Tạo cảnh siêu thực","Tượng khổng lồ đang xây dựng","Trong bức ảnh, có một đối tượng khổng lồ đang được xây dựng ở giữa thành phố. Đối tượng mặc trang phục hiện đại, phần thân trên đã được hoàn thiện, trong khi phần thân dưới vẫn đang bao quanh bởi hệ thống giàn giáo thép phức tạp. Trên giàn giáo có rất nhiều công nhân đang làm việc, tạo cảm giác như một công trình kiến trúc quy mô lớn. Bối cảnh xung quanh là một vòng xoay lớn giữa trung tâm thành phố, có các con đường tấp nập xe cộ, xe buýt, ô tô và cả máy móc thi công. Phối cảnh tổng thể cho thấy sự tương phản giữa đối tượng khổng lồ và không gian đô thị hiện đại, khiến công trình trở nên vừa hoành tráng vừa siêu thực.","text-to-image","/images/prompt001-020/prompt018.png","Prompt này tạo cảnh siêu thực về một tượng khổng lồ đang được xây dựng giữa thành phố, với giàn giáo, công nhân, và bối cảnh đô thị hiện đại tấp nập, tạo sự tương phản hoành tráng và kỳ ảo.","tượng khổng lồ, xây dựng, giàn giáo, công nhân, thành phố, vòng xoay, siêu thực, đô thị, hoành tráng, phối cảnh","LockMan04"
+19,"Tạo video ASMR","Máy ép thủy lực ép laptop","Video macro ASMR cảnh một máy ép thủy lực từ từ và đều đặn hạ xuống trong một chuyển động liên tục để ép bẹp [món đồ]. Tấm thép dày di chuyển mượt mà, không dừng lại, nén chặt nó với lực căng ngày càng tăng. Khi quá trình ép tiếp diễn, nó bắt đầu biến dạng, phát ra âm thanh nứt vỡ, rạn gãy hoặc nghiền nát chi tiết rõ ràng. Toàn bộ quá trình diễn ra trong một lần ép duy nhất, không đảo ngược hay tạm dừng. Bối cảnh là một không gian công nghiệp sạch sẽ, ánh sáng dịu, không có con người xuất hiện. Máy quay tập trung hoàn toàn vào chuyển động ép chậm rãi và âm thanh ASMR chi tiết. Hình ảnh mang phong cách điện ảnh, độ phân giải 4K, độ sâu trường ảnh nông.","text-to-video","/images/prompt001-020/prompt019.png","Prompt này tạo video macro ASMR cảnh máy ép thủy lực ép bẹp laptop, tập trung vào chuyển động chậm rãi, âm thanh nứt vỡ chi tiết, không gian công nghiệp sạch, ánh sáng dịu, phong cách điện ảnh 4K.","ASMR, macro, máy ép thủy lực, ép laptop, nứt vỡ, công nghiệp, 4K, cinematic, slow motion, không người","LockMan04"
+20,"Chân dung nghệ thuật","Chân dung studio ánh sáng softbox","Biến bức ảnh này thành một tác phẩm chân dung nghệ thuật trong studio, với ánh sáng softbox dịu, nền trơn màu tối giản. Tập trung làm nổi bật đường nét khuôn mặt và cảm xúc của đối tượng. Phong cách hiện đại, sắc nét, ánh sáng studio chuyên nghiệp.","text-to-image","/images/prompt001-020/prompt020.png","Prompt này tạo chân dung nghệ thuật studio với ánh sáng softbox dịu, nền tối giản, nhấn mạnh đường nét khuôn mặt và cảm xúc, phong cách hiện đại, sắc nét.","chân dung, studio, softbox, nghệ thuật, hiện đại, sắc nét, ánh sáng chuyên nghiệp, nền tối giản","LockMan04"
+21,"Chân dung thời trang","Studio tạp chí high-fashion","Chuyển đổi bức ảnh thành ảnh chụp studio phong cách tạp chí thời trang. Đối tượng được đặt trong nền trắng tinh khiết, ánh sáng mạnh từ nhiều hướng, tạo bóng đổ sắc nét. Tông màu trung tính, nhấn mạnh vào trang phục và thần thái như buổi chụp quảng cáo high-fashion.","text-to-image","/images/prompt021-040/prompt021.png","Prompt này tạo ảnh studio phong cách tạp chí thời trang với nền trắng, ánh sáng mạnh đa hướng, bóng đổ sắc nét, tông màu trung tính, nhấn mạnh trang phục và thần thái high-fashion.","studio, tạp chí, high-fashion, nền trắng, ánh sáng mạnh, bóng đổ, thời trang, thần thái, quảng cáo","LockMan04"
