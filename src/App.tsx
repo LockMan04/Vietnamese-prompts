@@ -9,6 +9,7 @@ import StatsSection from './components/StatsSection';
 import EmptyState from './components/EmptyState';
 import PromptGrid from './components/PromptGrid';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import { loadPromptsFromCSV, getUniqueCategories, getUniqueTypes } from './utils/csvLoader';
 import type { Prompt, FilterOptions } from './types';
 
@@ -17,6 +18,25 @@ function App() {
   const [filteredPrompts, setFilteredPrompts] = useState<Prompt[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  // Hot prompt IDs - bạn có thể cập nhật danh sách này
+  const hotIds = [1, 2, 17, 18];
+  
+  // Helper function để sắp xếp prompts với HOT prompts ở đầu
+  const sortPromptsWithHotFirst = (promptList: Prompt[]) => {
+    return [...promptList].sort((a, b) => {
+      const aIsHot = hotIds.includes(parseInt(a.id));
+      const bIsHot = hotIds.includes(parseInt(b.id));
+      
+      // Nếu a là hot và b không hot, a lên trước
+      if (aIsHot && !bIsHot) return -1;
+      // Nếu b là hot và a không hot, b lên trước
+      if (!aIsHot && bIsHot) return 1;
+      // Nếu cả hai cùng hot hoặc cùng không hot, giữ nguyên thứ tự ban đầu
+      return 0;
+    });
+  };
+  
   const [selectedPrompt, setSelectedPrompt] = useState<Prompt | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFiltering, setIsFiltering] = useState(false);
@@ -35,9 +55,13 @@ function App() {
       setLoading(true);
       setError(null);
       const data = await loadPromptsFromCSV();
-      setPrompts(data);
-      setFilteredPrompts(data);
-    } catch (err) {
+      
+      // Sắp xếp để đưa HOT prompts lên đầu ngay từ khi load
+      const sortedData = sortPromptsWithHotFirst(data);
+      
+      setPrompts(sortedData);
+      setFilteredPrompts(sortedData);
+    } catch {
       setError('Không thể tải dữ liệu prompts. Vui lòng thử lại sau.');
     } finally {
       setLoading(false);
@@ -80,7 +104,10 @@ function App() {
         filtered = filtered.filter(prompt => prompt.type === filters.type);
       }
 
-      setFilteredPrompts(filtered);
+      // Sắp xếp để đưa HOT prompts lên đầu
+      const sortedFiltered = sortPromptsWithHotFirst(filtered);
+
+      setFilteredPrompts(sortedFiltered);
       setAnimationKey(prev => prev + 1);
       setIsFiltering(false);
     };
@@ -166,7 +193,7 @@ function App() {
               </div>
             ) : (
               <div key={`grid-${animationKey}`} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-                <PromptGrid prompts={filteredPrompts} onPromptClick={handleCardClick} />
+                <PromptGrid prompts={filteredPrompts} onPromptClick={handleCardClick} hotIds={hotIds} />
               </div>
             )}
           </div>
@@ -180,7 +207,11 @@ function App() {
           prompt={selectedPrompt}
           isOpen={isModalOpen}
           onClose={handleCloseModal}
+          hotIds={hotIds}
         />
+        
+        {/* Scroll to Top Button */}
+        <ScrollToTop />
       </div>
     </ThemeProvider>
   );

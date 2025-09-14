@@ -4,9 +4,10 @@ import PromptCard from './PromptCard';
 interface PromptGridProps {
   prompts: Prompt[];
   onPromptClick: (prompt: Prompt) => void;
+  hotIds?: number[];
 }
 
-const PromptGrid = ({ prompts, onPromptClick }: PromptGridProps) => {
+const PromptGrid = ({ prompts, onPromptClick, hotIds = [] }: PromptGridProps) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {prompts.map((prompt, index) => (
@@ -20,6 +21,7 @@ const PromptGrid = ({ prompts, onPromptClick }: PromptGridProps) => {
           <PromptCard 
             prompt={prompt} 
             onClick={() => onPromptClick(prompt)}
+            hotIds={hotIds}
           />
         </div>
       ))}

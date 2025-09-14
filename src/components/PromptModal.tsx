@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { X, Copy, Check, FileText, Image, Video, Tag, Info, User, ChevronDown, ExternalLink, Bot, MessageCircle, Brain, Search, Globe, Zap, Sparkles } from 'lucide-react';
+import { X, Copy, Check, FileText, Image, Video, Tag, Info, User, ChevronDown, ExternalLink, Bot, MessageCircle, Brain, Search, Globe, Zap, Sparkles, Star } from 'lucide-react';
 
 interface Prompt {
   id: string;
@@ -17,9 +17,10 @@ interface PromptModalProps {
   prompt: Prompt | null;
   isOpen: boolean;
   onClose: () => void;
+  hotIds?: number[];
 }
 
-const PromptModal = ({ prompt, isOpen, onClose }: PromptModalProps) => {
+const PromptModal = ({ prompt, isOpen, onClose, hotIds = [] }: PromptModalProps) => {
   const [copied, setCopied] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -214,39 +215,55 @@ const PromptModal = ({ prompt, isOpen, onClose }: PromptModalProps) => {
     }
   };
 
+  const isHot = () => {
+    if (!prompt) return false;
+    const promptId = parseInt(prompt.id);
+    return hotIds.includes(promptId);
+  };
+
   const tags = prompt.tags.split(',').map(tag => tag.trim()).filter(tag => tag);
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/50 backdrop-blur-sm"
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           onClose();
         }
       }}
     >
-      <div className="relative w-full max-w-6xl max-h-[90vh] bg-white dark:bg-gray-800 rounded-xl shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-sm sm:max-w-2xl lg:max-w-6xl max-h-[95vh] sm:max-h-[90vh] bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
-          <div className="flex items-center space-x-3">
-            <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getTypeColor()}`}>
-              {getTypeIcon()}
-              <span className="ml-2">{getTypeLabel()}</span>
-            </span>
-            <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium">
-              {prompt.category}
-            </span>
-            <div className="flex items-center space-x-1 px-3 py-1 rounded-full text-sm font-medium" style={{backgroundColor: 'rgba(12, 151, 250, 0.1)', color: '#0c97fa'}}>
-              <User className="w-4 h-4" />
-              <span>{prompt.contributor}</span>
+        <div className="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700">
+          <div className="flex items-start justify-between mb-3">
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap gap-2 items-center">
+                <span className={`inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${getTypeColor()}`}>
+                  {getTypeIcon()}
+                  <span className="ml-1 sm:ml-2 hidden xs:inline">{getTypeLabel()}</span>
+                </span>
+                {isHot() && (
+                  <span className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-900/40 dark:to-orange-900/40 text-yellow-800 dark:text-yellow-300 border border-yellow-200 dark:border-yellow-700/50 animate-pulse">
+                    <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />
+                    <span className="ml-1 sm:ml-2 font-bold">HOT</span>
+                  </span>
+                )}
+                <span className="px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs sm:text-sm font-medium truncate max-w-[120px] sm:max-w-none">
+                  {prompt.category}
+                </span>
+                <div className="flex items-center space-x-1 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium" style={{backgroundColor: 'rgba(12, 151, 250, 0.1)', color: '#0c97fa'}}>
+                  <User className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span className="truncate max-w-[80px] sm:max-w-none">{prompt.contributor}</span>
+                </div>
+              </div>
             </div>
+            <button
+              onClick={onClose}
+              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors flex-shrink-0 ml-2"
+            >
+              <X className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 dark:text-gray-400" />
+            </button>
           </div>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-          >
-            <X className="w-6 h-6 text-gray-600 dark:text-gray-400" />
-          </button>
         </div>
 
         {/* Content */}
@@ -291,19 +308,24 @@ const PromptModal = ({ prompt, isOpen, onClose }: PromptModalProps) => {
             {/* Tags */}
             {tags.length > 0 && (
               <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
-                  <Tag className="w-5 h-5 mr-2" />
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white flex items-center">
+                  <Tag className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Tags
                 </h3>
-                <div className="flex flex-wrap gap-2">
-                  {tags.map((tag, index) => (
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                  {tags.slice(0, 10).map((tag, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg text-sm"
+                      className="px-2 sm:px-3 py-1 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg text-xs sm:text-sm font-medium"
                     >
-                      #{tag}
+                      #{tag.length > 20 ? tag.substring(0, 20) + '...' : tag}
                     </span>
                   ))}
+                  {tags.length > 10 && (
+                    <span className="px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-lg text-xs sm:text-sm font-medium">
+                      +{tags.length - 10} more
+                    </span>
+                  )}
                 </div>
               </div>
             )}

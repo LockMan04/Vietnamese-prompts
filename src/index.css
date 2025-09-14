@@ -170,14 +170,42 @@
   .stagger-3 { animation-delay: 150ms; }
   .stagger-4 { animation-delay: 200ms; }
   .stagger-5 { animation-delay: 250ms; }
+
+  /* Custom breakpoint for very small screens */
+  @media (min-width: 480px) {
+    .xs\:inline {
+      display: inline;
+    }
+  }
+
+  /* Modal mobile optimizations */
+  @media (max-width: 640px) {
+    .modal-mobile {
+      max-width: calc(100vw - 16px);
+    }
+    
+    .modal-tags {
+      max-width: 100px;
+    }
+  }
+
+  /* Hide scrollbar */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Ẩn thanh scroll chung */
-.hide-scrollbar {
+* {
   -ms-overflow-style: none;  /* IE và Edge */
   scrollbar-width: none;     /* Firefox */
 }
 
-.hide-scrollbar::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: none;             /* Chrome, Safari */
 }

@@ -79,7 +79,7 @@ const FilterBar = ({ filters, onFilterChange, categories, types, isFiltering = f
               <Hash className="w-4 h-4 vp-text-primary" />
               <h4 className="font-medium text-gray-900 dark:text-white">Lĩnh vực ({categories.length})</h4>
             </div>
-            <div className="max-h-32 overflow-y-auto hide-scrollbar p-1">
+            <div className="max-h-44 overflow-y-auto hide-scrollbar p-1">
               <div className="flex flex-wrap gap-2">
                 {categories.map((category) => (
                   <button
