@@ -44,7 +44,7 @@ const Footer = ({ totalPrompts, totalCategories }: FooterProps) => {
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl mx-auto">
             <a
-              href="https://github.com/LockMan04/Vietnamese-prompt/issues/new?labels=prompt-request&template=prompt-suggestion.md&title=%5BPROMPT%5D+"
+              href="https://github.com/LockMan04/Vietnamese-prompts/issues/new?labels=%C4%90%E1%BB%81+xu%E1%BA%A5t+Prompt&template=prompt-suggestion.md&title=%5BPROMPT%5D+"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 group"
@@ -63,7 +63,7 @@ const Footer = ({ totalPrompts, totalCategories }: FooterProps) => {
               <span className="text-sm">Đề xuất Prompt</span>
             </a>
             <a
-              href="https://github.com/LockMan04/Vietnamese-prompt/fork"
+              href="https://github.com/LockMan04/Vietnamese-prompts/fork"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 group"
@@ -82,7 +82,7 @@ const Footer = ({ totalPrompts, totalCategories }: FooterProps) => {
               <span className="text-sm">Fork & PR</span>
             </a>
             <a
-              href="https://github.com/LockMan04/Vietnamese-prompt"
+              href="https://github.com/LockMan04/Vietnamese-prompts"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 px-4 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-all duration-200 group"
@@ -91,7 +91,7 @@ const Footer = ({ totalPrompts, totalCategories }: FooterProps) => {
               <span className="text-sm">View GitHub</span>
             </a>
             <a
-              href="https://github.com/LockMan04/Vietnamese-prompt/stargazers"
+              href="https://github.com/LockMan04/Vietnamese-prompts/stargazers"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 px-4 py-3 bg-yellow-600/20 hover:bg-yellow-600/30 text-yellow-200 rounded-lg transition-all duration-200 group"
