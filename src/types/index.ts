@@ -4,7 +4,8 @@ export interface Prompt {
   title: string;
   prompt: string;
   type: 'text' | 'text-to-image' | 'text-to-video';
-  image: string;
+  image_before: string;
+  image_after: string;
   description: string;
   tags: string;
   contributor: string;

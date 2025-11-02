@@ -10,7 +10,7 @@ import EmptyState from './components/EmptyState';
 import PromptGrid from './components/PromptGrid';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import { loadPromptsFromCSV, getUniqueCategories, getUniqueTypes } from './utils/csvLoader';
+import { loadPromptsFromJSONL, getUniqueCategories, getUniqueTypes } from './utils/jsonlLoader';
 import type { Prompt, FilterOptions } from './types';
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
     try {
       setLoading(true);
       setError(null);
-      const data = await loadPromptsFromCSV();
+      const data = await loadPromptsFromJSONL();
       
       // Sắp xếp để đưa HOT prompts lên đầu ngay từ khi load
       const sortedData = sortPromptsWithHotFirst(data);
