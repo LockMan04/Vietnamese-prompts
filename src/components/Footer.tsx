@@ -139,7 +139,7 @@ const Footer = ({ totalPrompts, totalCategories }: FooterProps) => {
                 </div>
                 <ul className="text-sm space-y-2 list-disc list-inside text-left" style={{color: '#0c97fa'}}>
                   <li>Fork repository</li>
-                  <li>Chỉnh sửa prompts.csv</li>
+                  <li>Chỉnh sửa prompts.jsonl</li>
                   <li>Tạo Pull Request</li>
                 </ul>
               </div>

@@ -18,7 +18,6 @@ Thư viện prompts tiếng Việt dành cho AI và sáng tạo nội dung. Khá
 - **Vite** cho build tool
 - **Tailwind CSS** cho styling
 - **Lucide React** cho icons
-- **PapaParse** cho CSV parsing
 
 ## Cài đặt và chạy
 
@@ -51,31 +50,20 @@ src/
 │   └── ThemeContext.tsx # Context cho dark mode
 ├── types/             # TypeScript type definitions
 ├── utils/             # Utility functions
-│   └── csvLoader.ts   # Load và parse CSV data
+│   └── jsonlLoader.ts   # Load và parse JSONL data
 └── App.tsx           # Main application component
 
 public/
-└── prompts.csv       # Dữ liệu prompts
+└── prompts.jsonl       # Dữ liệu prompts
 ```
 
 ## Cách thêm prompts mới
 
-1. Mở file `public/prompts.csv`
-2. Thêm dòng mới với format:
-   ```csv
-   id,category,title,prompt,type,image,description,tags
+1. Mở file `public/prompts.jsonl`
+2. Thêm một đối tượng JSON mới trên một dòng mới:
+   ```json
+   {"id": "...", "category": "...", "title": "...", "prompt": "...", "type": "...", "image_before": "", "image_after": "/images/...", "description": "...", "tags": "...", "contributor": "..."}
    ```
-
-Các trường:
-- `id`: ID duy nhất
-- `category`: Lĩnh vực (VD: "Marketing", "Giáo dục")
-- `title`: Tiêu đề ngắn gọn
-- `prompt`: Nội dung prompt chi tiết
-- `type`: Loại prompt ("text", "text-to-image", "text-to-video")
-- `image`: URL hình ảnh minh họa
-- `description`: Mô tả ngắn
-- `tags`: Tags phân cách bởi dấu phẩy
-- `contributor`: Người đóng góp
 
 ## Đóng góp
 

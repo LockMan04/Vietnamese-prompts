@@ -1,17 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { X, Copy, Check, FileText, Image, Video, Tag, Info, User, ChevronDown, ExternalLink, Bot, MessageCircle, Brain, Search, Globe, Zap, Sparkles, Star } from 'lucide-react';
-
-interface Prompt {
-  id: string;
-  category: string;
-  title: string;
-  prompt: string;
-  type: 'text' | 'text-to-image' | 'text-to-video';
-  image: string;
-  description: string;
-  tags: string;
-  contributor: string;
-}
+import type { Prompt } from '../types';
 
 interface PromptModalProps {
   prompt: Prompt | null;
@@ -437,7 +426,7 @@ const PromptModal = ({ prompt, isOpen, onClose, hotIds = [] }: PromptModalProps)
                   </div>
                 )}
                 <img
-                  src={prompt.image && prompt.image.trim() !== '' ? prompt.image : '/icon.png'}
+                  src={prompt.image_after && prompt.image_after.trim() !== '' ? prompt.image_after : '/icon.png'}
                   alt={prompt.title}
                   className={`w-full h-auto rounded-lg transition-opacity duration-300 ${
                     imageLoaded ? 'opacity-100' : 'opacity-0 absolute inset-0'
