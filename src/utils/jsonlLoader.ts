@@ -27,7 +27,15 @@ export const loadPromptsFromJSONL = async (): Promise<Prompt[]> => {
           return null;
         }
       })
-      .filter((p): p is Prompt => p !== null && p.id && p.title && p.prompt);
+      .filter((p): p is Prompt => 
+        p !== null && 
+        !!p.id && 
+        !!p.title && 
+        !!p.prompt &&
+        typeof p.id === 'string' &&
+        typeof p.title === 'string' &&
+        typeof p.prompt === 'string'
+      );
 
     return prompts;
   } catch (error) {
