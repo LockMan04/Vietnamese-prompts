@@ -44,7 +44,7 @@ const Footer = ({ totalPrompts, totalCategories }: FooterProps) => {
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl mx-auto">
             <a
-              href="https://github.com/LockMan04/Vietnamese-prompts/issues/new?labels=%C4%90%E1%BB%81+xu%E1%BA%A5t+Prompt&template=prompt-suggestion.md&title=%5BPROMPT%5D+"
+              href="/contribution"
               target="_blank"
               rel="noopener noreferrer"
               className="vp-contribution-card-easy flex items-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 group"

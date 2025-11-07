@@ -112,6 +112,20 @@
   background: var(--vp-button-primary-hover);
 }
 
+/* Button Primary Large (for Contribution Page) */
+.btn-vp-primary-large {
+  background: var(--vp-primary-gradient);
+  color: white;
+  border: none;
+  box-shadow: var(--vp-shadow-primary);
+  transition: all 0.3s ease;
+}
+
+.btn-vp-primary-large:hover {
+  background: var(--vp-gradient-hover);
+  box-shadow: 0 20px 25px -5px rgba(12, 151, 250, 0.3), 0 10px 10px -5px rgba(12, 151, 250, 0.2);
+}
+
 /* Loading Spinner */
 .vp-loader {
   color: var(--vp-loader-color);
