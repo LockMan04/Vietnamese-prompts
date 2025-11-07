@@ -47,17 +47,7 @@ const Footer = ({ totalPrompts, totalCategories }: FooterProps) => {
               href="https://github.com/LockMan04/Vietnamese-prompts/issues/new?labels=%C4%90%E1%BB%81+xu%E1%BA%A5t+Prompt&template=prompt-suggestion.md&title=%5BPROMPT%5D+"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 group"
-              style={{
-                background: 'linear-gradient(135deg, rgba(12, 151, 250, 0.2), rgba(22, 225, 245, 0.2))',
-                color: '#16e1f5'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(12, 151, 250, 0.3), rgba(22, 225, 245, 0.3))';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(12, 151, 250, 0.2), rgba(22, 225, 245, 0.2))';
-              }}
+              className="vp-contribution-card-easy flex items-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 group"
             >
               <MessageCircle className="w-4 h-4 group-hover:scale-110 transition-transform" />
               <span className="text-sm">Đề xuất Prompt</span>
@@ -66,17 +56,7 @@ const Footer = ({ totalPrompts, totalCategories }: FooterProps) => {
               href="https://github.com/LockMan04/Vietnamese-prompts/fork"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 group"
-              style={{
-                background: 'linear-gradient(135deg, rgba(12, 151, 250, 0.2), rgba(22, 225, 245, 0.2))',
-                color: '#0c97fa'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(12, 151, 250, 0.3), rgba(22, 225, 245, 0.3))';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(12, 151, 250, 0.2), rgba(22, 225, 245, 0.2))';
-              }}
+              className="vp-contribution-card-advanced flex items-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 group"
             >
               <GitFork className="w-4 h-4 group-hover:scale-110 transition-transform" />
               <span className="text-sm">Fork & PR</span>
@@ -109,17 +89,17 @@ const Footer = ({ totalPrompts, totalCategories }: FooterProps) => {
             <h5 className="text-lg font-medium text-white mb-4 text-center">2 cách đóng góp:</h5>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {/* Easy Way - Issues */}
-              <div className="bg-white/5 rounded-lg p-6 border-l-4" style={{borderLeftColor: '#16e1f5'}}>
+              <div className="bg-white/5 rounded-lg p-6 border-l-4 vp-contribution-card-easy">
                 <div className="flex items-start space-x-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{backgroundColor: 'rgba(22, 225, 245, 0.2)'}}>
-                    <MessageCircle className="w-5 h-5" style={{color: '#16e1f5'}} />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 vp-icon-bg-secondary">
+                    <MessageCircle className="w-5 h-5 vp-text-secondary" />
                   </div>
                   <div className="text-left">
                     <h6 className="text-white font-medium mb-1">Cách dễ - GitHub Issues</h6>
-                    <p className="text-xs" style={{color: '#16e1f5'}}>Dành cho mọi người</p>
+                    <p className="text-xs vp-text-secondary">Dành cho mọi người</p>
                   </div>
                 </div>
-                <ul className="text-sm space-y-2 list-disc list-inside text-left" style={{color: '#16e1f5'}}>
+                <ul className="text-sm space-y-2 list-disc list-inside text-left vp-text-secondary">
                   <li>Click "Đề xuất Prompt"</li>
                   <li>Điền thông tin prompt vào form</li>
                   <li>Submit issue, chúng tôi sẽ thêm vào</li>
@@ -127,17 +107,17 @@ const Footer = ({ totalPrompts, totalCategories }: FooterProps) => {
               </div>
               
               {/* Advanced Way - Fork */}
-              <div className="bg-white/5 rounded-lg p-6 border-l-4" style={{borderLeftColor: '#0c97fa'}}>
+              <div className="bg-white/5 rounded-lg p-6 border-l-4 vp-contribution-card-advanced">
                 <div className="flex items-start space-x-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{backgroundColor: 'rgba(12, 151, 250, 0.2)'}}>
-                    <GitFork className="w-5 h-5" style={{color: '#0c97fa'}} />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 vp-icon-bg-primary">
+                    <GitFork className="w-5 h-5 vp-text-primary" />
                   </div>
                   <div className="text-left">
                     <h6 className="text-white font-medium mb-1">Cách nâng cao - Fork & PR</h6>
-                    <p className="text-xs" style={{color: '#0c97fa'}}>Dành cho developers</p>
+                    <p className="text-xs vp-text-primary">Dành cho developers</p>
                   </div>
                 </div>
-                <ul className="text-sm space-y-2 list-disc list-inside text-left" style={{color: '#0c97fa'}}>
+                <ul className="text-sm space-y-2 list-disc list-inside text-left vp-text-primary">
                   <li>Fork repository</li>
                   <li>Chỉnh sửa prompts.jsonl</li>
                   <li>Tạo Pull Request</li>

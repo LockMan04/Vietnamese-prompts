@@ -52,7 +52,7 @@ const FilterBar = ({ filters, onFilterChange, categories, types, isFiltering = f
               <div className="flex items-center space-x-2">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Bộ lọc thông minh</h3>
                 {isFiltering && (
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2" style={{ borderColor: '#0c97fa' }}></div>
+                  <div className="vp-loader animate-spin rounded-full h-4 w-4 border-b-2 vp-border-color"></div>
                 )}
               </div>
               <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -87,13 +87,9 @@ const FilterBar = ({ filters, onFilterChange, categories, types, isFiltering = f
                     onClick={() => handleCategoryChange(category)}
                     className={`px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
                       filters.category === category
-                        ? 'text-white shadow-lg transform scale-105'
+                        ? 'vp-filter-selected transform scale-105'
                         : 'bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-105'
                     }`}
-                    style={{
-                      background: filters.category === category ? 'linear-gradient(135deg, #0c97fa, #16e1f5)' : undefined,
-                      boxShadow: filters.category === category ? '0 4px 6px -1px rgba(12, 151, 250, 0.3)' : undefined
-                    }}
                   >
                     {category}
                   </button>
@@ -127,13 +123,9 @@ const FilterBar = ({ filters, onFilterChange, categories, types, isFiltering = f
                     onClick={() => handleTypeChange(type)}
                     className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 flex items-center space-x-2 whitespace-nowrap ${
                       filters.type === type
-                        ? 'text-white shadow-lg transform scale-105'
+                        ? 'vp-filter-selected transform scale-105'
                         : 'bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-105'
                     }`}
-                    style={{
-                      background: filters.type === type ? 'linear-gradient(135deg, #0c97fa, #16e1f5)' : undefined,
-                      boxShadow: filters.type === type ? '0 4px 6px -1px rgba(12, 151, 250, 0.3)' : undefined
-                    }}
                   >
                     <config.icon className="w-4 h-4" />
                     <span>{config.label}</span>

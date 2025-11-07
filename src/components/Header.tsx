@@ -35,7 +35,7 @@ const Header = ({ onSearchChange, searchTerm }: HeaderProps) => {
               <div className="absolute -inset-0.5 rounded-xl opacity-20 blur animate-pulse"></div>
             </div>
             <div>
-              <h1 className="text-2xl font-bold bg-clip-text text-transparent" style={{backgroundImage: 'linear-gradient(135deg, #0c97fa, #16e1f5)'}}>
+              <h1 className="text-2xl font-bold vp-text-gradient">
                 Vietnamese Prompts
               </h1>
               <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">
@@ -53,8 +53,7 @@ const Header = ({ onSearchChange, searchTerm }: HeaderProps) => {
                 placeholder="Tìm kiếm prompts theo từ khóa, lĩnh vực..."
                 value={searchTerm}
                 onChange={(e) => onSearchChange(e.target.value)}
-                className="focus:outline-none w-full pl-12 pr-6 py-3 border border-gray-200 dark:border-gray-700 rounded-full bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:border-transparent focus:bg-white dark:focus:bg-gray-800 transition-all duration-200 text-sm focus:ring-0"
-                style={{'--tw-ring-color': '#0c97fa'} as React.CSSProperties}
+                className="focus:outline-none w-full pl-12 pr-6 py-3 border border-gray-200 dark:border-gray-700 rounded-full bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:border-transparent focus:bg-white dark:focus:bg-gray-800 transition-all duration-200 text-sm focus:ring-0 vp-ring-color"
               />
             </div>
           </div>
@@ -107,8 +106,7 @@ const Header = ({ onSearchChange, searchTerm }: HeaderProps) => {
               placeholder="Tìm kiếm prompts..."
               value={searchTerm}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="focus:outline-nonemax-h-32 overflow-y-auto hide-scrollbar w-full pl-10 pr-4 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:border-transparent text-sm"
-              style={{'--tw-ring-color': '#0c97fa'} as React.CSSProperties}
+              className="focus:outline-nonemax-h-32 overflow-y-auto hide-scrollbar w-full pl-10 pr-4 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:border-transparent text-sm vp-ring-color"
             />
           </div>
         </div>

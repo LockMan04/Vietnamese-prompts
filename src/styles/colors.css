@@ -172,3 +172,59 @@
   background: var(--vp-primary-10);
   color: var(--vp-text-primary);
 }
+
+/* Border Colors */
+.vp-border-color {
+  border-color: var(--vp-primary-start);
+}
+
+/* Ring Colors */
+.vp-ring-color {
+  --tw-ring-color: var(--vp-primary-start);
+}
+
+/* Selected Filter Button */
+.vp-filter-selected {
+  background: var(--vp-primary-gradient);
+  box-shadow: var(--vp-shadow-primary);
+  color: white;
+}
+
+/* Contribution Cards - Easy */
+.vp-contribution-card-easy {
+  background: var(--vp-gradient-light);
+  color: var(--vp-text-secondary);
+  border-left-color: var(--vp-border-primary);
+}
+
+.vp-contribution-card-easy:hover {
+  background: var(--vp-gradient-light-hover);
+}
+
+/* Contribution Cards - Advanced */
+.vp-contribution-card-advanced {
+  background: var(--vp-gradient-light);
+  color: var(--vp-text-primary);
+  border-left-color: var(--vp-border-secondary);
+}
+
+.vp-contribution-card-advanced:hover {
+  background: var(--vp-gradient-light-hover);
+}
+
+/* Icon Backgrounds */
+.vp-icon-bg-secondary {
+  background: var(--vp-secondary-20);
+}
+
+.vp-icon-bg-primary {
+  background: var(--vp-primary-20);
+}
+
+/* Text Gradient */
+.vp-text-gradient {
+  background: var(--vp-primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

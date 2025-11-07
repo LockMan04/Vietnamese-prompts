@@ -1,16 +1,5 @@
 import { FileText, Image, Video, ArrowRight, User, Star } from 'lucide-react';
-
-interface Prompt {
-  id: string;
-  category: string;
-  title: string;
-  prompt: string;
-  type: 'text' | 'text-to-image' | 'text-to-video';
-  image: string;
-  description: string;
-  tags: string;
-  contributor: string;
-}
+import type { Prompt } from '../types';
 
 interface PromptCardProps {
   prompt: Prompt;

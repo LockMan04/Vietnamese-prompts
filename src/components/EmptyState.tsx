@@ -24,16 +24,7 @@ const EmptyState: React.FC<EmptyStateProps> = ({ onClearFilters }) => {
       
       <button
         onClick={onClearFilters}
-        className="inline-flex items-center space-x-2 px-6 py-3 text-white rounded-lg font-medium transition-all duration-200 hover:scale-105 active:scale-95"
-        style={{
-          background: 'linear-gradient(135deg, #0c97fa, #16e1f5)'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = 'linear-gradient(135deg, #0a85e0, #14c9db)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = 'linear-gradient(135deg, #0c97fa, #16e1f5)';
-        }}
+        className="btn-vp-primary inline-flex items-center space-x-2 px-6 py-3 text-white rounded-lg font-medium transition-all duration-200 hover:scale-105 active:scale-95"
       >
         <X className="w-4 h-4" />
         <span>Xóa bộ lọc</span>
