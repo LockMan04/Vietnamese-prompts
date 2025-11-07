@@ -1,0 +1,26 @@
+# CODEOWNERS file for Vietnamese-prompts
+# This file defines who owns specific parts of the repository
+# Learn more: https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything in the repo
+# This will be the fallback if no specific rule matches
+* @LockMan04
+
+# Source code - TypeScript/React components
+/src/ @LockMan04
+
+# Public assets and static files
+/public/ @LockMan04
+
+# Configuration files
+*.json @LockMan04
+*.config.js @LockMan04
+*.config.ts @LockMan04
+tsconfig*.json @LockMan04
+
+# Documentation
+README.md @LockMan04
+*.md @LockMan04
+
+# GitHub workflows and actions
+/.github/ @LockMan04
