@@ -23,6 +23,7 @@ export const usePrompts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isFiltering, setIsFiltering] = useState(false);
+  const [animationKey, setAnimationKey] = useState(0);
   const [filters, setFilters] = useState<FilterOptions>({
     category: '',
     type: '',
@@ -79,6 +80,7 @@ export const usePrompts = () => {
 
       const sortedFiltered = sortPromptsWithHotFirst(filtered);
       setFilteredPrompts(sortedFiltered);
+      setAnimationKey(prev => prev + 1);
       setIsFiltering(false);
     };
 
@@ -103,6 +105,7 @@ export const usePrompts = () => {
     loading,
     error,
     isFiltering,
+    animationKey,
     filters,
     categories,
     types,

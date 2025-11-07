@@ -1,4 +1,3 @@
-
 const FilteringIndicator = () => {
   return (
     <div className="min-h-[400px] flex items-center justify-center">
