@@ -1,83 +1,40 @@
 # Vietnamese Prompts - Thư viện Prompt Tiếng Việt
 
-Thư viện prompts tiếng Việt dành cho AI và sáng tạo nội dung. Khám phá hàng trăm prompts chất lượng cao cho text, hình ảnh và video.
+[![Trạng thái Repository](https://img.shields.io/github/repo-size/LockMan04/vietnamese-prompts?style=flat-square)](https://github.com/LockMan04/vietnamese-prompts)
+[![Đóng góp](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
 
-## Tính năng
+**[🚀 Xem Demo Live](https://promptvn.site/)** | **[✍️ Đóng góp Prompt của bạn](https://promptvn.site/contribution)**
 
-- 🇻🇳 **Tiếng Việt hoàn toàn**: Tất cả prompts được viết bằng tiếng Việt tự nhiên
-- 🎨 **Đa dạng lĩnh vực**: Marketing, Giáo dục, Công nghệ, Sáng tạo nội dung, và nhiều hơn nữa
-- 🖼️ **Nhiều loại prompt**: Text, Text-to-Image, Text-to-Video
-- 🔍 **Tìm kiếm thông minh**: Tìm kiếm theo nội dung, danh mục, tags
-- 🌓 **Dark Mode**: Giao diện tối và sáng tùy chỉnh
-- 📱 **Responsive**: Tối ưu cho mobile, tablet và desktop
-- 📋 **Sao chép nhanh**: Copy prompt chỉ với một click
+Một thư viện mã nguồn mở, tuyển chọn các prompts tiếng Việt chất lượng cao dành cho các mô hình AI tạo sinh (Generative AI) như GPT, Gemini, Midjourney và các ứng dụng sáng tạo nội dung khác.
 
-## Công nghệ sử dụng
+![Giao diện Vietnamese Prompts](public/banner.png)
 
-- **React 18** với TypeScript
-- **Vite** cho build tool
-- **Tailwind CSS** cho styling
-- **Lucide React** cho icons
+## Tại sao lại có dự án này?
 
-## Cài đặt và chạy
+Trong khi có rất nhiều tài nguyên prompt bằng tiếng Anh, cộng đồng người Việt vẫn thiếu một nơi tập trung, chất lượng để chia sẻ và khám phá các prompt được thiết kế riêng cho ngôn ngữ và văn hóa Việt Nam. **Vietnamese Prompts** ra đời để giải quyết vấn đề đó.
 
-```bash
-# Clone repository
-git clone https://github.com/LockMan04/vietnamese-prompts.git
+## ✨ Tính năng nổi bật
 
-# Di chuyển vào thư mục project
-cd vietnamese-prompts
+- 🇻🇳 **Tiếng Việt hoàn toàn**: Prompts được viết tự nhiên, phù hợp với ngữ cảnh Việt Nam.
+- 🎨 **Đa dạng lĩnh vực**: Marketing, Giáo dục, Công nghệ, Sáng tạo, Giải trí...
+- 🖼️ **Nhiều loại prompt**: Hỗ trợ `text`, `text-to-image`, và `text-to-video`.
+- 🔍 **Tìm kiếm & Lọc thông minh**: Dễ dàng tìm kiếm theo nội dung, lọc theo danh mục và loại prompt.
+- ❤️ **Yêu thích**: Lưu lại các prompts bạn thường dùng.
+- 🌓 **Giao diện Sáng/Tối**: Tự động thay đổi theo hệ thống hoặc tùy chỉnh.
+- 📱 **Responsive**: Tối ưu cho mọi thiết bị từ mobile, tablet đến desktop.
+- 📋 **Sao chép nhanh**: Copy prompt chỉ với một cú nhấp chuột.
 
-# Cài đặt dependencies
-npm install
+## 🙌 Đóng góp
 
-# Chạy development server
-npm run dev
+**Bạn có một prompt hay?** Cách dễ nhất để đóng góp là qua trang web của chúng tôi!
 
-# Build cho production
-npm run build
-```
+**➡️ [Gửi prompt của bạn tại đây](https://lockman04.github.io/vietnamese-prompts/contribution)**
 
-## Cấu trúc dự án
+Nếu bạn muốn báo lỗi, yêu cầu tính năng hoặc đóng góp mã nguồn, hãy xem **[Hướng dẫn Đóng góp (CONTRIBUTING.md)](CONTRIBUTING.md)** của chúng tôi để biết chi tiết.
 
-```
-src/
-├── components/          # React components
-│   ├── Header.tsx      # Header với search và dark mode
-│   ├── FilterBar.tsx   # Bộ lọc theo danh mục và loại
-│   └── PromptCard.tsx  # Card hiển thị prompt
-├── contexts/           # React contexts
-│   └── ThemeContext.tsx # Context cho dark mode
-├── types/             # TypeScript type definitions
-├── utils/             # Utility functions
-│   └── jsonlLoader.ts   # Load và parse JSONL data
-└── App.tsx           # Main application component
+## 🛠️ Công nghệ sử dụng
 
-public/
-└── prompts.jsonl       # Dữ liệu prompts
-```
-
-## Cách thêm prompts mới
-
-1. Mở file `public/prompts.jsonl`
-2. Thêm một đối tượng JSON mới trên một dòng mới:
-   ```json
-   {"id": "...", "category": "...", "title": "...", "prompt": "...", "type": "...", "image_before": "", "image_after": "/images/...", "description": "...", "tags": "...", "contributor": "..."}
-   ```
-
-## Đóng góp
-
-Chúng tôi hoan nghênh mọi đóng góp! Hãy:
-
-1. Fork repository
-2. Tạo branch mới cho feature/bugfix
-3. Commit changes
-4. Tạo Pull Request
-
-Hoặc
-
-Tạo GitHub Issues
-
-1. Click "Đề xuất Prompt"
-2. Điền thông tin prompt vào form
-3. Submit issue, chúng tôi sẽ thêm vào
+- **Framework**: React 19 & Vite
+- **Ngôn ngữ**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
