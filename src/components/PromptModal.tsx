@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { X, Copy, Check, FileText, Image, Video, Tag, Info, User, ChevronDown, ExternalLink, Bot, MessageCircle, Brain, Search, Globe, Zap, Sparkles, Star } from 'lucide-react';
+import { X, Copy, Check, FileText, Image, Video, Tag, Info, User, ChevronDown, ExternalLink, Bot, MessageCircle, Brain, Search, Globe, Zap, Sparkles, Star, Heart } from 'lucide-react';
 import type { Prompt } from '../types';
 
 interface PromptModalProps {
@@ -7,9 +7,11 @@ interface PromptModalProps {
   isOpen: boolean;
   onClose: () => void;
   hotIds?: number[];
+  isFavorite?: (promptId: string) => boolean;
+  onToggleFavorite?: (promptId: string) => void;
 }
 
-const PromptModal = ({ prompt, isOpen, onClose, hotIds = [] }: PromptModalProps) => {
+const PromptModal = ({ prompt, isOpen, onClose, hotIds = [], isFavorite, onToggleFavorite }: PromptModalProps) => {
   const [copied, setCopied] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -246,12 +248,31 @@ const PromptModal = ({ prompt, isOpen, onClose, hotIds = [] }: PromptModalProps)
                 </div>
               </div>
             </div>
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors flex-shrink-0 ml-2"
-            >
-              <X className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 dark:text-gray-400" />
-            </button>
+            <div className="flex items-center space-x-2">
+              {prompt && isFavorite && onToggleFavorite && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggleFavorite(prompt.id);
+                  }}
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                  aria-label={isFavorite(prompt.id) ? 'Bỏ yêu thích' : 'Yêu thích'}
+                  title={isFavorite(prompt.id) ? 'Bỏ yêu thích' : 'Thêm vào yêu thích'}
+                >
+                  <Heart className={`w-5 h-5 sm:w-6 sm:h-6 transition-colors ${
+                    isFavorite(prompt.id) 
+                      ? 'fill-red-500 text-red-500' 
+                      : 'text-gray-400 hover:text-red-500 fill-transparent'
+                  }`} />
+                </button>
+              )}
+              <button
+                onClick={onClose}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors flex-shrink-0"
+              >
+                <X className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 dark:text-gray-400" />
+              </button>
+            </div>
           </div>
         </div>
 

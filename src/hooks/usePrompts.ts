@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { loadPromptsFromJSONL, getUniqueCategories, getUniqueTypes } from '../utils/jsonlLoader';
 import type { Prompt, FilterOptions } from '../types';
 import { useFavorites } from './useFavorites';
@@ -7,13 +7,29 @@ import { useFavorites } from './useFavorites';
 // Định nghĩa các hằng số
 const HOT_IDS = [1, 2, 17, 18];
 
-// Helper function để sắp xếp prompts với HOT prompts ở đầu
-const sortPromptsWithHotFirst = (promptList: Prompt[]) => {
+// Helper function để sắp xếp prompts với favorites ở đầu, sau đó HOT prompts
+const sortPromptsWithFavoritesAndHotFirst = (promptList: Prompt[], favoriteIds: string[]) => {
   return [...promptList].sort((a, b) => {
+    const aIsFavorite = favoriteIds.includes(a.id);
+    const bIsFavorite = favoriteIds.includes(b.id);
     const aIsHot = HOT_IDS.includes(parseInt(a.id));
     const bIsHot = HOT_IDS.includes(parseInt(b.id));
-    if (aIsHot && !bIsHot) return -1;
-    if (!aIsHot && bIsHot) return 1;
+
+    // Favorites luôn ở đầu
+    if (aIsFavorite && !bIsFavorite) return -1;
+    if (!aIsFavorite && bIsFavorite) return 1;
+
+    // Trong cùng nhóm favorites hoặc non-favorites, HOT ở trước
+    if (aIsFavorite && bIsFavorite) {
+      if (aIsHot && !bIsHot) return -1;
+      if (!aIsHot && bIsHot) return 1;
+    }
+
+    if (!aIsFavorite && !bIsFavorite) {
+      if (aIsHot && !bIsHot) return -1;
+      if (!aIsHot && bIsHot) return 1;
+    }
+
     return 0;
   });
 };
@@ -35,30 +51,45 @@ export const usePrompts = () => {
   const { favoriteIds, toggleFavorite, isFavorite } = useFavorites();
   const categories = useMemo(() => getUniqueCategories(prompts), [prompts]);
   const types = useMemo(() => getUniqueTypes(prompts), [prompts]);
+  const prevFiltersRef = useRef<FilterOptions>(filters);
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
       const data = await loadPromptsFromJSONL();
-      const sortedData = sortPromptsWithHotFirst(data);
-      setPrompts(sortedData);
-      setFilteredPrompts(sortedData);
+      // Sắp xếp sẽ được xử lý bởi useEffect khi favoriteIds thay đổi
+      setPrompts(data);
     } catch {
       setError('Không thể tải dữ liệu prompts. Vui lòng thử lại sau.');
     } finally {
       setLoading(false);
     }
-  };
-
-  useEffect(() => {
-    loadData();
   }, []);
 
   useEffect(() => {
+    loadData();
+  }, [loadData]);
+
+  // Effect để filter và sắp xếp - chỉ tăng animationKey khi filters thay đổi
+  useEffect(() => {
     const filterPrompts = async () => {
-      setIsFiltering(true);
-      await new Promise(resolve => setTimeout(resolve, 100));
+      const isActuallyFiltering = filters.searchTerm || filters.category || filters.type || filters.showFavorites;
+      
+      // Kiểm tra xem filters có thay đổi không (không phải chỉ favoriteIds)
+      const filtersChanged = 
+        prevFiltersRef.current.searchTerm !== filters.searchTerm ||
+        prevFiltersRef.current.category !== filters.category ||
+        prevFiltersRef.current.type !== filters.type ||
+        prevFiltersRef.current.showFavorites !== filters.showFavorites;
+
+      // Chỉ hiển thị loading animation khi filters thay đổi, không phải khi chỉ toggle favorite
+      if (filtersChanged && isActuallyFiltering) {
+        setIsFiltering(true);
+        await new Promise(resolve => setTimeout(resolve, 100));
+      } else if (!isActuallyFiltering) {
+        setIsFiltering(false);
+      }
 
       let filtered = prompts;
 
@@ -85,10 +116,19 @@ export const usePrompts = () => {
         filtered = filtered.filter(prompt => favoriteIds.includes(prompt.id));
       }
 
-      const sortedFiltered = sortPromptsWithHotFirst(filtered);
+      // Luôn sắp xếp với favorites ở đầu
+      const sortedFiltered = sortPromptsWithFavoritesAndHotFirst(filtered, favoriteIds);
       setFilteredPrompts(sortedFiltered);
-      setAnimationKey(prev => prev + 1);
-      setIsFiltering(false);
+      
+      // Chỉ tăng animationKey khi filters thay đổi, KHÔNG phải khi chỉ favoriteIds thay đổi
+      // Điều này tránh việc re-animate toàn bộ grid khi chỉ toggle favorite
+      if (filtersChanged) {
+        setAnimationKey(prev => prev + 1);
+        setIsFiltering(false);
+      }
+      
+      // Cập nhật prevFiltersRef sau khi xử lý
+      prevFiltersRef.current = filters;
     };
 
     filterPrompts();

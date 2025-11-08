@@ -94,6 +94,8 @@ function App() {
             isOpen={isModalOpen}
             onClose={closeModal}
             hotIds={hotIds}
+            isFavorite={isFavorite}
+            onToggleFavorite={toggleFavorite}
           />
           <ScrollToTop />
         </div>
