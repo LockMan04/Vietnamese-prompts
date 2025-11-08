@@ -5,9 +5,11 @@ interface PromptGridProps {
   prompts: Prompt[];
   onPromptClick: (prompt: Prompt) => void;
   hotIds?: number[];
+  isFavorite: (promptId: string) => boolean;
+  onToggleFavorite: (promptId: string) => void;
 }
 
-const PromptGrid = ({ prompts, onPromptClick, hotIds = [] }: PromptGridProps) => {
+const PromptGrid = ({ prompts, onPromptClick, hotIds = [], isFavorite, onToggleFavorite }: PromptGridProps) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {prompts.map((prompt, index) => (
@@ -18,10 +20,12 @@ const PromptGrid = ({ prompts, onPromptClick, hotIds = [] }: PromptGridProps) =>
             animationDelay: `${Math.min(index * 50, 300)}ms`
           }}
         >
-          <PromptCard 
-            prompt={prompt} 
+          <PromptCard
+            prompt={prompt}
             onClick={() => onPromptClick(prompt)}
             hotIds={hotIds}
+            isFavorite={isFavorite(prompt.id)}
+            onToggleFavorite={onToggleFavorite}
           />
         </div>
       ))}

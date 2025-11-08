@@ -15,6 +15,7 @@ export interface FilterOptions {
   category: string;
   type: string;
   searchTerm: string;
+  showFavorites?: boolean;
 }
 
 export interface ThemeContextType {

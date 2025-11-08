@@ -14,6 +14,8 @@ interface MainContentProps {
   onPromptClick: (prompt: Prompt) => void;
   onClearFilters: () => void;
   hotIds: number[];
+  isFavorite: (promptId: string) => boolean;
+  onToggleFavorite: (promptId: string) => void;
 }
 
 const MainContent = ({
@@ -26,6 +28,8 @@ const MainContent = ({
   onPromptClick,
   onClearFilters,
   hotIds,
+  isFavorite,
+  onToggleFavorite,
 }: MainContentProps) => {
   return (
     <main className="container mx-auto px-4 py-8">
@@ -46,7 +50,13 @@ const MainContent = ({
           </div>
         ) : (
           <div key={`grid-${animationKey}`} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <PromptGrid prompts={filteredPrompts} onPromptClick={onPromptClick} hotIds={hotIds} />
+            <PromptGrid
+              prompts={filteredPrompts}
+              onPromptClick={onPromptClick}
+              hotIds={hotIds}
+              isFavorite={isFavorite}
+              onToggleFavorite={onToggleFavorite}
+            />
           </div>
         )}
       </div>
