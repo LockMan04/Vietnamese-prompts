@@ -27,7 +27,10 @@ function App() {
     loadData,
     handleFilterChange,
     handleSearchChange,
-    clearFilters
+    clearFilters,
+    isFavorite,
+    toggleFavorite,
+    toggleShowFavorites,
   } = usePrompts();
 
   const { selectedPrompt, isModalOpen, openModal, closeModal } = useModal();
@@ -65,6 +68,7 @@ function App() {
                   categories={categories}
                   types={types}
                   isFiltering={isFiltering}
+                  onToggleFavorites={toggleShowFavorites}
                 />
 
                 <MainContent
@@ -77,6 +81,8 @@ function App() {
                   onPromptClick={openModal}
                   onClearFilters={clearFilters}
                   hotIds={hotIds}
+                  isFavorite={isFavorite}
+                  onToggleFavorite={toggleFavorite}
                 />
               </>
             } />

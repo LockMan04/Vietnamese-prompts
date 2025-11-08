@@ -1,20 +1,22 @@
-import { Filter, X, FileText, Image, Video, Hash, Layers } from 'lucide-react';
+import { Filter, X, FileText, Image, Video, Hash, Layers, Heart } from 'lucide-react';
 
 interface FilterOptions {
   category: string;
   type: string;
   searchTerm: string;
+  showFavorites?: boolean;
 }
 
 interface FilterBarProps {
   filters: FilterOptions;
   onFilterChange: (filters: FilterOptions) => void;
+  onToggleFavorites: () => void;
   categories: string[];
   types: string[];
   isFiltering?: boolean;
 }
 
-const FilterBar = ({ filters, onFilterChange, categories, types, isFiltering = false }: FilterBarProps) => {
+const FilterBar = ({ filters, onFilterChange, onToggleFavorites, categories, types, isFiltering = false }: FilterBarProps) => {
   const handleCategoryChange = (category: string) => {
     onFilterChange({
       ...filters,
@@ -98,13 +100,26 @@ const FilterBar = ({ filters, onFilterChange, categories, types, isFiltering = f
             </div>
           </div>
 
-          {/* Types */}
-          <div className="bg-white dark:bg-gray-800/50 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-gray-700/50 min-w-0">
+          {/* Types & Actions */}
+          <div className="bg-white dark:bg-gray-800/50 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-gray-700/50 min-w-0 flex flex-col">
             <div className="flex items-center space-x-2 mb-4">
               <Layers className="w-4 h-4 vp-text-secondary" />
-              <h4 className="font-medium text-gray-900 dark:text-white">Loại prompt ({types.length})</h4>
+              <h4 className="font-medium text-gray-900 dark:text-white">Hành động & Loại prompt</h4>
             </div>
             <div className="flex flex-wrap gap-2">
+              {/* Favorites Button */}
+              <button
+                onClick={onToggleFavorites}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 flex items-center space-x-2 whitespace-nowrap ${
+                  filters.showFavorites
+                    ? 'vp-filter-selected transform scale-105'
+                    : 'bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-105'
+                }`}
+              >
+                <Heart className="w-4 h-4" />
+                <span>Yêu thích</span>
+              </button>
+
               {types.filter(type => type && type.trim() !== '').map((type) => {
                 const typeConfig = {
                   'text': { label: 'Văn bản', icon: FileText, gradient: 'from-emerald-500 to-emerald-600' },

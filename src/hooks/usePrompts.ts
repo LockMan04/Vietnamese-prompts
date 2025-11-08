@@ -2,6 +2,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { loadPromptsFromJSONL, getUniqueCategories, getUniqueTypes } from '../utils/jsonlLoader';
 import type { Prompt, FilterOptions } from '../types';
+import { useFavorites } from './useFavorites';
 
 // Định nghĩa các hằng số
 const HOT_IDS = [1, 2, 17, 18];
@@ -27,9 +28,11 @@ export const usePrompts = () => {
   const [filters, setFilters] = useState<FilterOptions>({
     category: '',
     type: '',
-    searchTerm: ''
+    searchTerm: '',
+    showFavorites: false,
   });
 
+  const { favoriteIds, toggleFavorite, isFavorite } = useFavorites();
   const categories = useMemo(() => getUniqueCategories(prompts), [prompts]);
   const types = useMemo(() => getUniqueTypes(prompts), [prompts]);
 
@@ -78,6 +81,10 @@ export const usePrompts = () => {
         filtered = filtered.filter(prompt => prompt.type === filters.type);
       }
 
+      if (filters.showFavorites) {
+        filtered = filtered.filter(prompt => favoriteIds.includes(prompt.id));
+      }
+
       const sortedFiltered = sortPromptsWithHotFirst(filtered);
       setFilteredPrompts(sortedFiltered);
       setAnimationKey(prev => prev + 1);
@@ -85,7 +92,7 @@ export const usePrompts = () => {
     };
 
     filterPrompts();
-  }, [prompts, filters]);
+  }, [prompts, filters, favoriteIds]);
 
   const handleFilterChange = (newFilters: FilterOptions) => {
     setFilters(newFilters);
@@ -96,7 +103,14 @@ export const usePrompts = () => {
   };
 
   const clearFilters = () => {
-    setFilters({ category: '', type: '', searchTerm: '' });
+    setFilters({ category: '', type: '', searchTerm: '', showFavorites: false });
+  };
+
+  const toggleShowFavorites = () => {
+    setFilters(prev => ({
+      ...prev,
+      showFavorites: !prev.showFavorites
+    }));
   };
 
   return {
@@ -113,6 +127,9 @@ export const usePrompts = () => {
     loadData,
     handleFilterChange,
     handleSearchChange,
-    clearFilters
+    clearFilters,
+    toggleFavorite,
+    isFavorite,
+    toggleShowFavorites,
   };
 };

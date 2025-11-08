@@ -1,13 +1,21 @@
-import { FileText, Image, Video, ArrowRight, User, Star } from 'lucide-react';
+import { FileText, Image, Video, ArrowRight, User, Star, Heart } from 'lucide-react';
 import type { Prompt } from '../types';
 
 interface PromptCardProps {
   prompt: Prompt;
   onClick: () => void;
   hotIds?: number[];
+  isFavorite: boolean;
+  onToggleFavorite: (promptId: string) => void;
 }
 
-const PromptCard = ({ prompt, onClick, hotIds = [] }: PromptCardProps) => {
+const PromptCard = ({ prompt, onClick, hotIds = [], isFavorite, onToggleFavorite }: PromptCardProps) => {
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onToggleFavorite(prompt.id);
+  };
+
   const getTypeIcon = () => {
     switch (prompt.type) {
       case 'text':
@@ -85,7 +93,16 @@ const PromptCard = ({ prompt, onClick, hotIds = [] }: PromptCardProps) => {
             {truncateText(prompt.category, 30)}
           </span>
         </div>
-        <ArrowRight className="w-4 h-4 text-gray-400 flex-shrink-0" />
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={handleFavoriteClick}
+            className="text-gray-400 hover:text-red-500 focus:outline-none transition-colors duration-200"
+            aria-label={isFavorite ? 'Bỏ yêu thích' : 'Yêu thích'}
+          >
+            <Heart className={`w-5 h-5 ${isFavorite ? 'fill-red-500 text-red-500' : 'fill-transparent'}`} />
+          </button>
+          <ArrowRight className="w-4 h-4 text-gray-400 flex-shrink-0" />
+        </div>
       </div>
 
       {/* Content */}
