@@ -18,6 +18,7 @@ const Footer = ({ totalPrompts, totalCategories }: FooterProps) => {
                 src="/icon.png" 
                 alt="Vietnamese Prompts Logo" 
                 className="w-8 h-8 object-contain"
+                loading="lazy"
               />
             </div>
             <div className="absolute -inset-1 rounded-xl opacity-30 blur"></div>

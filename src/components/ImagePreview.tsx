@@ -121,6 +121,7 @@ const ImagePreview = ({ prompt }: ImagePreviewProps) => {
                     ? (beforeImageLoaded ? 'opacity-100' : 'opacity-0')
                     : (imageLoaded ? 'opacity-100' : 'opacity-0')
                 }`}
+                loading={hasBoth ? 'eager' : 'lazy'}
                 style={{
                   display: hasBoth && !beforeImageLoaded ? 'none' : 'block',
                   width: '100%',
@@ -163,6 +164,7 @@ const ImagePreview = ({ prompt }: ImagePreviewProps) => {
                   className={`w-full h-auto rounded-lg transition-opacity duration-300 ${
                     afterImageLoaded ? 'opacity-100' : 'opacity-0'
                   }`}
+                  loading="lazy"
                   style={{
                     display: !afterImageLoaded ? 'none' : 'block',
                     width: '100%',
