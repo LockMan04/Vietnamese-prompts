@@ -20,6 +20,26 @@ const ImagePreview = ({ prompt }: ImagePreviewProps) => {
     setIsFlipped(false);
   }, [prompt.id]);
 
+  // Preload image_after if both images exist
+  useEffect(() => {
+    const hasBefore = prompt.image_before && prompt.image_before.trim() !== '';
+    const hasAfter = prompt.image_after && prompt.image_after.trim() !== '';
+    const hasBoth = hasBefore && hasAfter;
+
+    if (hasBoth && prompt.image_after) {
+      // Preload image_after immediately
+      const img = document.createElement('img');
+      img.onload = () => {
+        setAfterImageLoaded(true);
+      };
+      img.onerror = () => {
+        // If image fails to load, mark as loaded to show default
+        setAfterImageLoaded(true);
+      };
+      img.src = prompt.image_after;
+    }
+  }, [prompt.id, prompt.image_after, prompt.image_before]);
+
   // Determine which images are available
   const hasBefore = prompt.image_before && prompt.image_before.trim() !== '';
   const hasAfter = prompt.image_after && prompt.image_after.trim() !== '';
@@ -72,7 +92,7 @@ const ImagePreview = ({ prompt }: ImagePreviewProps) => {
       <div className="relative">
         {/* Canvas Container with Flip Effect */}
         <div
-          className={`relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 min-h-[300px] ${
+          className={`relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 w-full aspect-square ${
             hasBoth ? 'cursor-pointer hover:shadow-lg transition-shadow duration-300' : ''
           }`}
           style={{
@@ -89,14 +109,14 @@ const ImagePreview = ({ prompt }: ImagePreviewProps) => {
 
           {/* Loading Spinner */}
           {shouldShowLoading() && (
-            <div className="absolute inset-0 aspect-square flex items-center justify-center bg-gray-100 dark:bg-gray-700 z-0">
+            <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-700 z-0">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
             </div>
           )}
 
           {/* Image Container with 3D Flip Effect */}
           <div
-            className="relative w-full"
+            className="relative w-full h-full"
             style={{
               transformStyle: 'preserve-3d',
               transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -105,27 +125,25 @@ const ImagePreview = ({ prompt }: ImagePreviewProps) => {
           >
             {/* Front Face - Before (or Only After or Default when not hasBoth) */}
             <div
-              className="relative w-full"
+              className="absolute inset-0 w-full h-full"
               style={{
                 backfaceVisibility: 'hidden',
                 WebkitBackfaceVisibility: 'hidden',
-                position: hasBoth ? 'relative' : 'static',
-                width: '100%',
               }}
             >
               <img
                 src={hasBoth ? prompt.image_before : getCurrentImageSrc()}
                 alt={hasBoth ? `${prompt.title} - Trước` : prompt.title}
-                className={`w-full h-auto rounded-lg transition-opacity duration-300 ${
+                className={`w-full h-full object-contain rounded-lg transition-opacity duration-300 ${
                   hasBoth
                     ? (beforeImageLoaded ? 'opacity-100' : 'opacity-0')
                     : (imageLoaded ? 'opacity-100' : 'opacity-0')
                 }`}
                 loading={hasBoth ? 'eager' : 'lazy'}
                 style={{
-                  display: hasBoth && !beforeImageLoaded ? 'none' : 'block',
-                  width: '100%',
-                  height: 'auto',
+                  visibility: hasBoth 
+                    ? (beforeImageLoaded ? 'visible' : 'hidden')
+                    : (imageLoaded ? 'visible' : 'hidden'),
                 }}
                 onLoad={() => {
                   if (hasBoth) {
@@ -150,25 +168,22 @@ const ImagePreview = ({ prompt }: ImagePreviewProps) => {
             {/* Back Face - After (only rendered when hasBoth) */}
             {hasBoth && (
               <div
-                className="absolute inset-0 w-full"
+                className="absolute inset-0 w-full h-full"
                 style={{
                   backfaceVisibility: 'hidden',
                   WebkitBackfaceVisibility: 'hidden',
                   transform: 'rotateY(180deg)',
-                  width: '100%',
                 }}
               >
                 <img
                   src={prompt.image_after}
                   alt={`${prompt.title} - Sau`}
-                  className={`w-full h-auto rounded-lg transition-opacity duration-300 ${
+                  className={`w-full h-full object-contain rounded-lg transition-opacity duration-300 ${
                     afterImageLoaded ? 'opacity-100' : 'opacity-0'
                   }`}
-                  loading="lazy"
+                  loading="eager"
                   style={{
-                    display: !afterImageLoaded ? 'none' : 'block',
-                    width: '100%',
-                    height: 'auto',
+                    visibility: afterImageLoaded ? 'visible' : 'hidden',
                   }}
                   onLoad={() => setAfterImageLoaded(true)}
                   onError={(e) => {
