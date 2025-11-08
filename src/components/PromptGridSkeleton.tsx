@@ -1,4 +1,3 @@
-import React from 'react';
 import PromptCardSkeleton from './PromptCardSkeleton';
 
 interface PromptGridSkeletonProps {

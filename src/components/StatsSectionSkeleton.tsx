@@ -1,5 +1,3 @@
-import React from 'react';
-
 const StatsSectionSkeleton = () => {
   return (
     <div className="mb-12">
