@@ -1,10 +1,12 @@
 import { X } from 'lucide-react';
-import { formatShortcut, useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
+import { formatShortcut, useKeyboardShortcuts, type KeyboardShortcut } from '../hooks/useKeyboardShortcuts';
 
 interface KeyboardShortcutsHelpProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+type ShortcutDisplay = Omit<KeyboardShortcut, 'handler'>;
 
 const KeyboardShortcutsHelp = ({ isOpen, onClose }: KeyboardShortcutsHelpProps) => {
   // Close on Esc
@@ -24,7 +26,7 @@ const KeyboardShortcutsHelp = ({ isOpen, onClose }: KeyboardShortcutsHelpProps) 
 
   if (!isOpen) return null;
 
-  const shortcuts = [
+  const shortcuts: ShortcutDisplay[] = [
     {
       key: 'k',
       ctrlKey: true,
@@ -77,7 +79,7 @@ const KeyboardShortcutsHelp = ({ isOpen, onClose }: KeyboardShortcutsHelpProps) 
                   {shortcut.description}
                 </span>
                 <kbd className="px-3 py-1.5 text-sm font-semibold text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm">
-                  {formatShortcut(shortcut as any)}
+                  {formatShortcut(shortcut)}
                 </kbd>
               </div>
             ))}

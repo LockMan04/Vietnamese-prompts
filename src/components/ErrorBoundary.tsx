@@ -29,6 +29,9 @@ class ErrorBoundary extends Component<Props, State> {
 
   private handleReset = () => {
     this.setState({ hasError: false, error: null });
+  };
+
+  private handleReload = () => {
     window.location.reload();
   };
 
@@ -58,12 +61,20 @@ class ErrorBoundary extends Component<Props, State> {
                 </pre>
               </details>
             )}
-            <button
-              onClick={this.handleReset}
-              className="btn-vp-primary px-6 py-2 rounded-lg text-white font-medium"
-            >
-              Tải lại trang
-            </button>
+            <div className="flex gap-3 justify-center">
+              <button
+                onClick={this.handleReset}
+                className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              >
+                Thử lại
+              </button>
+              <button
+                onClick={this.handleReload}
+                className="btn-vp-primary px-6 py-2 rounded-lg text-white font-medium"
+              >
+                Tải lại trang
+              </button>
+            </div>
           </div>
         </div>
       );

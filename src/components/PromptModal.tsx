@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Copy, Check, FileText, Tag } from 'lucide-react';
+import { Copy, Check, FileText, Tag, Share2 } from 'lucide-react';
 import type { Prompt } from '../types';
 import PromptModalHeader from './PromptModalHeader';
 import ImagePreview from './ImagePreview';
@@ -26,6 +26,7 @@ const PromptModal = ({
   onToggleFavorite,
 }: PromptModalProps) => {
   const [copied, setCopied] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
 
@@ -69,6 +70,20 @@ const PromptModal = ({
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error('Failed to copy text: ', err);
+    }
+  };
+
+  const handleCopyLink = async () => {
+    try {
+      const currentUrl = window.location.origin + window.location.pathname;
+      const shareUrl = `${currentUrl}?prompt=${prompt.id}`;
+      await navigator.clipboard.writeText(shareUrl);
+      setLinkCopied(true);
+      handleToast('Đã sao chép link!');
+      setTimeout(() => setLinkCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy link: ', err);
+      handleToast('Lỗi: Không thể sao chép link.');
     }
   };
 
@@ -168,6 +183,15 @@ const PromptModal = ({
               >
                 {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                 <span>{copied ? 'Đã sao chép!' : 'Sao chép prompt'}</span>
+              </button>
+
+              <button
+                onClick={handleCopyLink}
+                className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                title="Sao chép link để chia sẻ prompt này"
+              >
+                {linkCopied ? <Check className="w-4 h-4" /> : <Share2 className="w-4 h-4" />}
+                <span>{linkCopied ? 'Đã sao chép link!' : 'Chia sẻ'}</span>
               </button>
 
               {/* AI Platforms Dropdown */}

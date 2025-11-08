@@ -1,18 +1,25 @@
 import React from 'react';
+import FilterBarSkeleton from './FilterBarSkeleton';
+import StatsSectionSkeleton from './StatsSectionSkeleton';
+import PromptGridSkeleton from './PromptGridSkeleton';
 
 const LoadingScreen: React.FC = () => {
   return (
-    <div className="min-h-[60vh] flex flex-col items-center justify-center">
-      <div className="relative">
-        <div className="vp-loader animate-spin rounded-full h-16 w-16 border-b-2 vp-border-color"></div>
-        <div className="vp-loader absolute inset-0 animate-ping rounded-full h-16 w-16 border-2 opacity-20 vp-border-color"></div>
-      </div>
-      <p className="mt-6 text-gray-600 dark:text-gray-400 text-lg font-medium">
-        Đang tải dữ liệu...
-      </p>
-      <p className="mt-2 text-gray-500 dark:text-gray-500 text-sm">
-        Vui lòng chờ trong giây lát
-      </p>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-indigo-950/30">
+      {/* Header placeholder - sẽ được render bởi App */}
+      <div className="h-[73px] bg-white/95 dark:bg-gray-900/95 border-b border-gray-200 dark:border-gray-800" />
+      
+      {/* Filter Bar Skeleton */}
+      <FilterBarSkeleton />
+      
+      {/* Main Content Skeleton */}
+      <main className="container mx-auto px-4 py-8">
+        <StatsSectionSkeleton />
+        <PromptGridSkeleton count={12} />
+      </main>
+      
+      {/* Footer placeholder */}
+      <div className="h-64 bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 dark:from-gray-950 dark:via-blue-950 dark:to-purple-950" />
     </div>
   );
 };
