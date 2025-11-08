@@ -3,9 +3,8 @@ import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { loadPromptsFromJSONL, getUniqueCategories, getUniqueTypes } from '../utils/jsonlLoader';
 import type { Prompt, FilterOptions } from '../types';
 import { useFavorites } from './useFavorites';
-
-// Định nghĩa các hằng số
-const HOT_IDS = [1, 2, 17, 18];
+import { HOT_IDS, SEARCH_DEBOUNCE_DELAY } from '../constants';
+import { useDebounce } from './useDebounce';
 
 // Helper function để sắp xếp prompts với favorites ở đầu, sau đó HOT prompts
 const sortPromptsWithFavoritesAndHotFirst = (promptList: Prompt[], favoriteIds: string[]) => {
@@ -53,6 +52,10 @@ export const usePrompts = () => {
   const types = useMemo(() => getUniqueTypes(prompts), [prompts]);
   const prevFiltersRef = useRef<FilterOptions>(filters);
 
+  // Debounce searchTerm để giảm số lần filter khi user đang gõ
+  // Delay 300ms - đủ ngắn để cảm thấy responsive, đủ dài để giảm số lần filter
+  const debouncedSearchTerm = useDebounce(filters.searchTerm, SEARCH_DEBOUNCE_DELAY);
+
   const loadData = useCallback(async () => {
     try {
       setLoading(true);
@@ -72,29 +75,39 @@ export const usePrompts = () => {
   }, [loadData]);
 
   // Effect để filter và sắp xếp - chỉ tăng animationKey khi filters thay đổi
+  // Sử dụng debouncedSearchTerm để filter, nhưng vẫn check filters.searchTerm để hiển thị loading
   useEffect(() => {
     const filterPrompts = async () => {
-      const isActuallyFiltering = filters.searchTerm || filters.category || filters.type || filters.showFavorites;
+      // Sử dụng debouncedSearchTerm cho filtering thực tế
+      const isActuallyFiltering = debouncedSearchTerm || filters.category || filters.type || filters.showFavorites;
       
-      // Kiểm tra xem filters có thay đổi không (không phải chỉ favoriteIds)
+      // Kiểm tra xem filters có thay đổi không (sử dụng debouncedSearchTerm cho search)
       const filtersChanged = 
-        prevFiltersRef.current.searchTerm !== filters.searchTerm ||
+        prevFiltersRef.current.searchTerm !== debouncedSearchTerm ||
         prevFiltersRef.current.category !== filters.category ||
         prevFiltersRef.current.type !== filters.type ||
         prevFiltersRef.current.showFavorites !== filters.showFavorites;
 
-      // Chỉ hiển thị loading animation khi filters thay đổi, không phải khi chỉ toggle favorite
-      if (filtersChanged && isActuallyFiltering) {
+      // Hiển thị loading khi:
+      // 1. User đang gõ (filters.searchTerm !== debouncedSearchTerm) - đang chờ debounce
+      // 2. Hoặc filters khác thay đổi và có filter active
+      const isTyping = filters.searchTerm !== debouncedSearchTerm;
+      
+      if ((filtersChanged && isActuallyFiltering) || (isTyping && filters.searchTerm)) {
         setIsFiltering(true);
-        await new Promise(resolve => setTimeout(resolve, 100));
-      } else if (!isActuallyFiltering) {
+        // Chỉ delay nếu không phải đang gõ (để không delay quá nhiều)
+        if (!isTyping) {
+          await new Promise(resolve => setTimeout(resolve, 100));
+        }
+      } else if (!isActuallyFiltering && !isTyping) {
         setIsFiltering(false);
       }
 
       let filtered = prompts;
 
-      if (filters.searchTerm) {
-        const searchLower = filters.searchTerm.toLowerCase();
+      // Sử dụng debouncedSearchTerm thay vì filters.searchTerm
+      if (debouncedSearchTerm) {
+        const searchLower = debouncedSearchTerm.toLowerCase();
         filtered = filtered.filter(prompt =>
           prompt.title.toLowerCase().includes(searchLower) ||
           prompt.prompt.toLowerCase().includes(searchLower) ||
@@ -127,12 +140,15 @@ export const usePrompts = () => {
         setIsFiltering(false);
       }
       
-      // Cập nhật prevFiltersRef sau khi xử lý
-      prevFiltersRef.current = filters;
+      // Cập nhật prevFiltersRef sau khi xử lý (sử dụng debouncedSearchTerm)
+      prevFiltersRef.current = {
+        ...filters,
+        searchTerm: debouncedSearchTerm,
+      };
     };
 
     filterPrompts();
-  }, [prompts, filters, favoriteIds]);
+  }, [prompts, filters, favoriteIds, debouncedSearchTerm]);
 
   const handleFilterChange = (newFilters: FilterOptions) => {
     setFilters(newFilters);

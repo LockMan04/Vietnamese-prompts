@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
+import { STORAGE_KEYS } from '../constants';
 
-const FAVORITES_KEY = 'favoritePrompts';
+const FAVORITES_KEY = STORAGE_KEYS.FAVORITES;
 
 const getFavoriteIds = (): string[] => {
   try {

@@ -1,14 +1,44 @@
 import { Moon, Sun, Search, Heart } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
 
 interface HeaderProps {
   onSearchChange: (term: string) => void;
   searchTerm: string;
+  onShowShortcuts?: () => void;
 }
 
-const Header = ({ onSearchChange, searchTerm }: HeaderProps) => {
+const Header = ({ onSearchChange, searchTerm, onShowShortcuts }: HeaderProps) => {
   const { isDark, toggleTheme } = useTheme();
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const mobileSearchInputRef = useRef<HTMLInputElement>(null);
+
+  // Keyboard shortcuts
+  useKeyboardShortcuts([
+    {
+      key: 'k',
+      ctrlKey: true, // Works with both Ctrl (Windows/Linux) and Cmd (Mac)
+      handler: () => {
+        // Focus vào search input (ưu tiên desktop, fallback mobile)
+        if (searchInputRef.current) {
+          searchInputRef.current.focus();
+        } else if (mobileSearchInputRef.current) {
+          mobileSearchInputRef.current.focus();
+        }
+      },
+    },
+    {
+      key: '/',
+      ctrlKey: true, // Works with both Ctrl (Windows/Linux) and Cmd (Mac)
+      handler: () => {
+        if (onShowShortcuts) {
+          onShowShortcuts();
+        }
+      },
+    },
+  ]);
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
@@ -41,8 +71,9 @@ const Header = ({ onSearchChange, searchTerm }: HeaderProps) => {
             <div className="relative w-full">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
+                ref={searchInputRef}
                 type="text"
-                placeholder="Tìm kiếm prompts theo từ khóa, lĩnh vực..."
+                placeholder="Tìm kiếm prompts... (⌘K)"
                 value={searchTerm}
                 onChange={(e) => onSearchChange(e.target.value)}
                 className="focus:outline-none w-full pl-12 pr-6 py-3 border border-gray-200 dark:border-gray-700 rounded-full bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:border-transparent focus:bg-white dark:focus:bg-gray-800 transition-all duration-200 text-sm focus:ring-0 vp-ring-color"
@@ -94,6 +125,7 @@ const Header = ({ onSearchChange, searchTerm }: HeaderProps) => {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <input
+              ref={mobileSearchInputRef}
               type="text"
               placeholder="Tìm kiếm prompts..."
               value={searchTerm}

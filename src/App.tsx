@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
 import FilterBar from './components/FilterBar';
@@ -8,11 +9,13 @@ import ErrorScreen from './components/ErrorScreen';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import KeyboardShortcutsHelp from './components/KeyboardShortcutsHelp';
 import { usePrompts } from './hooks/usePrompts';
 import { useModal } from './hooks/useModal';
 import ContributionPage from './components/ContributionPage';
 
 function App() {
+  const [showShortcuts, setShowShortcuts] = useState(false);
   const {
     prompts,
     filteredPrompts,
@@ -58,6 +61,7 @@ function App() {
           <Header
             onSearchChange={handleSearchChange}
             searchTerm={filters.searchTerm}
+            onShowShortcuts={() => setShowShortcuts(true)}
           />
           <Routes>
             <Route path="/" element={
@@ -98,6 +102,10 @@ function App() {
             onToggleFavorite={toggleFavorite}
           />
           <ScrollToTop />
+          <KeyboardShortcutsHelp
+            isOpen={showShortcuts}
+            onClose={() => setShowShortcuts(false)}
+          />
         </div>
       </ThemeProvider>
     </Router>

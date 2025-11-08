@@ -6,6 +6,7 @@ import ImagePreview from './ImagePreview';
 import PromptInfo from './PromptInfo';
 import AIPlatformsDropdown from './AIPlatformsDropdown';
 import ToastNotification from './ToastNotification';
+import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
 
 interface PromptModalProps {
   prompt: Prompt | null;
@@ -43,6 +44,21 @@ const PromptModal = ({
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  // Keyboard shortcut: Esc to close modal
+  useKeyboardShortcuts(
+    [
+      {
+        key: 'Escape',
+        handler: () => {
+          if (isOpen) {
+            onClose();
+          }
+        },
+      },
+    ],
+    isOpen
+  );
 
   if (!isOpen || !prompt) return null;
 
