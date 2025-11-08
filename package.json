@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build && if exist public\\CNAME copy public\\CNAME dist\\ && if exist public\\.nojekyll copy public\\.nojekyll dist\\",
+    "predeploy": "npm run build && if exist public\\CNAME copy public\\CNAME dist\\ && if exist public\\.nojekyll copy public\\.nojekyll dist\\ && if exist public\\404.html copy public\\404.html dist\\",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {

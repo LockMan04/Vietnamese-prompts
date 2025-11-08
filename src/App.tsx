@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
@@ -20,6 +20,7 @@ import ContributionPage from './components/ContributionPage';
 
 // Component bên trong Router để sử dụng useModal
 function AppContent() {
+  const navigate = useNavigate();
   const [showShortcuts, setShowShortcuts] = useState(false);
   const [showRecentPrompts, setShowRecentPrompts] = useState(false);
   const {
@@ -44,6 +45,24 @@ function AppContent() {
 
   const { selectedPrompt, isModalOpen, openModal, closeModal } = useModal();
   const { recentPrompts, addRecentPrompt, removeRecentPrompt, clearRecentPrompts } = useRecentPrompts();
+
+  // Handle GitHub Pages 404.html redirect
+  // When GitHub Pages serves 404.html, it redirects to /?/path
+  // We need to convert this back to a normal path for React Router
+  useEffect(() => {
+    const search = window.location.search;
+    
+    // Check if this is a redirect from 404.html (format: /?/path)
+    if (search.startsWith('?/')) {
+      const redirectPath = search.slice(2).split('&')[0].replace(/~and~/g, '&');
+      // Extract query params and hash if any
+      const remainingSearch = search.includes('&') ? '?' + search.split('&').slice(1).join('&').replace(/~and~/g, '&') : '';
+      const hash = window.location.hash;
+      
+      // Navigate to the correct path using React Router
+      navigate(redirectPath + remainingSearch + hash, { replace: true });
+    }
+  }, [navigate]);
 
   // Handle opening modal - lưu vào recent prompts
   const handleOpenModal = (prompt: Prompt) => {
