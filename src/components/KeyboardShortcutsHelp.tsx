@@ -38,6 +38,11 @@ const KeyboardShortcutsHelp = ({ isOpen, onClose }: KeyboardShortcutsHelpProps) 
       description: 'Hiển thị keyboard shortcuts',
     },
     {
+      key: 'h',
+      ctrlKey: true,
+      description: 'Mở lịch sử xem gần đây',
+    },
+    {
       key: 'Escape',
       description: 'Đóng modal',
     },

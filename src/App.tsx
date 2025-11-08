@@ -11,13 +11,17 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import KeyboardShortcutsHelp from './components/KeyboardShortcutsHelp';
 import SectionErrorBoundary from './components/SectionErrorBoundary';
+import RecentPromptsDrawer from './components/RecentPromptsDrawer';
 import { usePrompts } from './hooks/usePrompts';
 import { useModal } from './hooks/useModal';
+import { useRecentPrompts } from './hooks/useRecentPrompts';
+import type { Prompt } from './types';
 import ContributionPage from './components/ContributionPage';
 
 // Component bên trong Router để sử dụng useModal
 function AppContent() {
   const [showShortcuts, setShowShortcuts] = useState(false);
+  const [showRecentPrompts, setShowRecentPrompts] = useState(false);
   const {
     prompts,
     filteredPrompts,
@@ -39,6 +43,13 @@ function AppContent() {
   } = usePrompts();
 
   const { selectedPrompt, isModalOpen, openModal, closeModal } = useModal();
+  const { recentPrompts, addRecentPrompt, removeRecentPrompt, clearRecentPrompts } = useRecentPrompts();
+
+  // Handle opening modal - lưu vào recent prompts
+  const handleOpenModal = (prompt: Prompt) => {
+    openModal(prompt);
+    addRecentPrompt(prompt);
+  };
 
   // Handle deep linking - open modal if URL has prompt ID khi prompts load xong
   useEffect(() => {
@@ -49,7 +60,7 @@ function AppContent() {
         const prompt = prompts.find((p) => p.id === promptId);
         if (prompt) {
           // Chỉ mở modal một lần khi load trang với URL có prompt ID
-          openModal(prompt);
+          handleOpenModal(prompt);
         }
       }
     }
@@ -72,6 +83,7 @@ function AppContent() {
           onSearchChange={handleSearchChange}
           searchTerm={filters.searchTerm}
           onShowShortcuts={() => setShowShortcuts(true)}
+          onShowRecentPrompts={() => setShowRecentPrompts(true)}
         />
       </SectionErrorBoundary>
 
@@ -97,7 +109,7 @@ function AppContent() {
                 filteredPrompts={filteredPrompts}
                 isFiltering={isFiltering}
                 animationKey={animationKey}
-                onPromptClick={openModal}
+                onPromptClick={handleOpenModal}
                 onClearFilters={clearFilters}
                 hotIds={hotIds}
                 isFavorite={isFavorite}
@@ -134,6 +146,17 @@ function AppContent() {
         <KeyboardShortcutsHelp
           isOpen={showShortcuts}
           onClose={() => setShowShortcuts(false)}
+        />
+      </SectionErrorBoundary>
+
+      <SectionErrorBoundary sectionName="Recent Prompts Drawer">
+        <RecentPromptsDrawer
+          isOpen={showRecentPrompts}
+          onClose={() => setShowRecentPrompts(false)}
+          recentPrompts={recentPrompts}
+          onPromptClick={handleOpenModal}
+          onRemovePrompt={removeRecentPrompt}
+          onClearAll={clearRecentPrompts}
         />
       </SectionErrorBoundary>
     </div>

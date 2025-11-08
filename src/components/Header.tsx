@@ -1,4 +1,4 @@
-import { Moon, Sun, Search, Heart } from 'lucide-react';
+import { Moon, Sun, Search, Heart, Clock } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
@@ -8,9 +8,10 @@ interface HeaderProps {
   onSearchChange: (term: string) => void;
   searchTerm: string;
   onShowShortcuts?: () => void;
+  onShowRecentPrompts?: () => void;
 }
 
-const Header = ({ onSearchChange, searchTerm, onShowShortcuts }: HeaderProps) => {
+const Header = ({ onSearchChange, searchTerm, onShowShortcuts, onShowRecentPrompts }: HeaderProps) => {
   const { isDark, toggleTheme } = useTheme();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const mobileSearchInputRef = useRef<HTMLInputElement>(null);
@@ -35,6 +36,15 @@ const Header = ({ onSearchChange, searchTerm, onShowShortcuts }: HeaderProps) =>
       handler: () => {
         if (onShowShortcuts) {
           onShowShortcuts();
+        }
+      },
+    },
+    {
+      key: 'h',
+      ctrlKey: true, // Ctrl/Cmd + H để mở recent prompts
+      handler: () => {
+        if (onShowRecentPrompts) {
+          onShowRecentPrompts();
         }
       },
     },
@@ -83,6 +93,13 @@ const Header = ({ onSearchChange, searchTerm, onShowShortcuts }: HeaderProps) =>
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-3">
+            <button
+              onClick={onShowRecentPrompts}
+              className="p-3 rounded-xl bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 text-blue-600 dark:text-blue-400 hover:from-blue-200 hover:to-indigo-200 dark:hover:from-blue-900/50 dark:hover:to-indigo-900/50 hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-200 group relative"
+              title="Đã xem gần đây (⌘H)"
+            >
+              <Clock className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+            </button>
             <Link
               to="/contribution"
               className="p-3 rounded-xl bg-gradient-to-r from-pink-100 to-red-100 dark:from-pink-900/30 dark:to-red-900/30 text-pink-600 dark:text-pink-400 hover:from-pink-200 hover:to-red-200 dark:hover:from-pink-900/50 dark:hover:to-red-900/50 hover:text-pink-700 dark:hover:text-pink-300 transition-all duration-200 group"
@@ -104,6 +121,13 @@ const Header = ({ onSearchChange, searchTerm, onShowShortcuts }: HeaderProps) =>
 
           {/* Mobile Actions */}
           <div className="md:hidden flex items-center space-x-2">
+            <button
+              onClick={onShowRecentPrompts}
+              className="p-2.5 rounded-lg bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 text-blue-600 dark:text-blue-400 hover:from-blue-200 hover:to-indigo-200 dark:hover:from-blue-900/50 dark:hover:to-indigo-900/50 transition-colors"
+              title="Đã xem gần đây"
+            >
+              <Clock className="w-4 h-4" />
+            </button>
             <Link
               to="/contribution"
               className="p-2.5 rounded-lg bg-gradient-to-r from-pink-100 to-red-100 dark:from-pink-900/30 dark:to-red-900/30 text-pink-600 dark:text-pink-400 hover:from-pink-200 hover:to-red-200 dark:hover:from-pink-900/50 dark:hover:to-red-900/50 transition-colors"
