@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vietnamese Prompts</title>
+    <script>
+      // GitHub Pages 404.html workaround for React Router
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      
+      // This script takes the current url and converts the path and query
+      // string into just a query string, and then redirects the browser
+      // to the new url with only a query string and hash fragment,
+      // e.g., https://www.foo.tld/one/two?a=b&c=d#qwe, becomes
+      // https://www.foo.tld/?/one/two&a=b~and~c=d#qwe
+      // Note: this 404.html file must be at least 512 bytes for some
+      // browsers to recognize it as a valid 404 page. Otherwise, the
+      // browser will show its default 404 page.
+      
+      (function() {
+        var pathSegmentsToKeep = 0;
+        var l = window.location;
+        l.replace(
+          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+          l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash
+        );
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- This content is here to ensure the file is at least 512 bytes -->
+    <div style="display: none;">
+      <p>Redirecting...</p>
+      <p>If you are not redirected automatically, please click <a href="/">here</a>.</p>
+      <p>This is a Single Page Application (SPA) deployed on GitHub Pages. The 404.html file redirects all routes to index.html so React Router can handle client-side routing properly.</p>
+    </div>
+  </body>
+</html>
