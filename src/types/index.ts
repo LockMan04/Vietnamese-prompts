@@ -11,11 +11,14 @@ export interface Prompt {
   contributor: string;
 }
 
+import { SortOrder } from '../hooks/usePrompts';
+
 export interface FilterOptions {
   category: string;
   type: string;
   searchTerm: string;
   showFavorites?: boolean;
+  sortOrder?: SortOrder;
 }
 
 export interface ThemeContextType {

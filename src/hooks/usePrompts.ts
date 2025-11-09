@@ -6,32 +6,41 @@ import { useFavorites } from './useFavorites';
 import { HOT_IDS, SEARCH_DEBOUNCE_DELAY } from '../constants';
 import { useDebounce } from './useDebounce';
 
-// Helper function để sắp xếp prompts với favorites ở đầu, sau đó HOT prompts
-const sortPromptsWithFavoritesAndHotFirst = (promptList: Prompt[], favoriteIds: string[]) => {
+// Thêm type cho các lựa chọn sắp xếp
+export type SortOrder = 'id-asc' | 'id-desc' | 'title-asc' | 'title-desc';
+
+// Helper function để sắp xếp prompts
+const sortPrompts = (promptList: Prompt[], favoriteIds: string[], sortOrder: SortOrder) => {
   return [...promptList].sort((a, b) => {
     const aIsFavorite = favoriteIds.includes(a.id);
     const bIsFavorite = favoriteIds.includes(b.id);
     const aIsHot = HOT_IDS.includes(parseInt(a.id));
     const bIsHot = HOT_IDS.includes(parseInt(b.id));
 
-    // Favorites luôn ở đầu
+    // Ưu tiên 1: Favorites
     if (aIsFavorite && !bIsFavorite) return -1;
     if (!aIsFavorite && bIsFavorite) return 1;
 
-    // Trong cùng nhóm favorites hoặc non-favorites, HOT ở trước
-    if (aIsFavorite && bIsFavorite) {
-      if (aIsHot && !bIsHot) return -1;
-      if (!aIsHot && bIsHot) return 1;
-    }
+    // Ưu tiên 2: HOT prompts (trong cùng nhóm favorite hoặc non-favorite)
+    if (aIsHot && !bIsHot) return -1;
+    if (!aIsHot && bIsHot) return 1;
 
-    if (!aIsFavorite && !bIsFavorite) {
-      if (aIsHot && !bIsHot) return -1;
-      if (!aIsHot && bIsHot) return 1;
+    // Ưu tiên 3: Sắp xếp theo lựa chọn của user
+    // Chỉ áp dụng sắp xếp này nếu cả hai item không phải là special (fav/hot) hoặc cùng là special
+    switch (sortOrder) {
+      case 'id-desc':
+        return parseInt(b.id) - parseInt(a.id);
+      case 'title-asc':
+        return a.title.localeCompare(b.title);
+      case 'title-desc':
+        return b.title.localeCompare(a.title);
+      case 'id-asc':
+      default:
+        return parseInt(a.id) - parseInt(b.id);
     }
-
-    return 0;
   });
 };
+
 
 export const usePrompts = () => {
   const [prompts, setPrompts] = useState<Prompt[]>([]);
@@ -46,6 +55,7 @@ export const usePrompts = () => {
     searchTerm: '',
     showFavorites: false,
   });
+  const [sortOrder, setSortOrder] = useState<SortOrder>('id-asc');
 
   const { favoriteIds, toggleFavorite, isFavorite } = useFavorites();
   const categories = useMemo(() => getUniqueCategories(prompts), [prompts]);
@@ -129,26 +139,27 @@ export const usePrompts = () => {
         filtered = filtered.filter(prompt => favoriteIds.includes(prompt.id));
       }
 
-      // Luôn sắp xếp với favorites ở đầu
-      const sortedFiltered = sortPromptsWithFavoritesAndHotFirst(filtered, favoriteIds);
+      // Sắp xếp prompts dựa trên sortOrder
+      const sortedFiltered = sortPrompts(filtered, favoriteIds, sortOrder);
       setFilteredPrompts(sortedFiltered);
       
-      // Chỉ tăng animationKey khi filters thay đổi, KHÔNG phải khi chỉ favoriteIds thay đổi
-      // Điều này tránh việc re-animate toàn bộ grid khi chỉ toggle favorite
-      if (filtersChanged) {
+      // Chỉ tăng animationKey khi filters hoặc sortOrder thay đổi
+      const sortOrderChanged = prevFiltersRef.current.sortOrder !== sortOrder;
+      if (filtersChanged || sortOrderChanged) {
         setAnimationKey(prev => prev + 1);
         setIsFiltering(false);
       }
       
-      // Cập nhật prevFiltersRef sau khi xử lý (sử dụng debouncedSearchTerm)
+      // Cập nhật prevFiltersRef sau khi xử lý
       prevFiltersRef.current = {
         ...filters,
         searchTerm: debouncedSearchTerm,
+        sortOrder: sortOrder,
       };
     };
 
     filterPrompts();
-  }, [prompts, filters, favoriteIds, debouncedSearchTerm]);
+  }, [prompts, filters, favoriteIds, debouncedSearchTerm, sortOrder]);
 
   const handleFilterChange = (newFilters: FilterOptions) => {
     setFilters(newFilters);
@@ -156,6 +167,11 @@ export const usePrompts = () => {
 
   const handleSearchChange = (searchTerm: string) => {
     setFilters(prev => ({ ...prev, searchTerm }));
+  };
+
+  const handleSortChange = (newSortOrder: SortOrder) => {
+    setSortOrder(newSortOrder);
+    setAnimationKey(prev => prev + 1); // Trigger re-animation
   };
 
   const clearFilters = () => {
@@ -177,12 +193,14 @@ export const usePrompts = () => {
     isFiltering,
     animationKey,
     filters,
+    sortOrder,
     categories,
     types,
     hotIds: HOT_IDS,
     loadData,
     handleFilterChange,
     handleSearchChange,
+    handleSortChange,
     clearFilters,
     toggleFavorite,
     isFavorite,
