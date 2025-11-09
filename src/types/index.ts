@@ -1,3 +1,5 @@
+export type SortOrder = 'id-asc' | 'id-desc' | 'title-asc' | 'title-desc';
+
 export interface Prompt {
   id: string;
   category: string;
@@ -10,12 +12,12 @@ export interface Prompt {
   tags: string;
   contributor: string;
 }
-
 export interface FilterOptions {
   category: string;
   type: string;
   searchTerm: string;
   showFavorites?: boolean;
+  sortOrder?: SortOrder;
 }
 
 export interface ThemeContextType {
