@@ -41,6 +41,8 @@ function AppContent() {
     isFavorite,
     toggleFavorite,
     toggleShowFavorites,
+    sortOrder,
+    handleSortChange,
   } = usePrompts();
 
   const { selectedPrompt, isModalOpen, openModal, closeModal } = useModal();
@@ -117,6 +119,8 @@ function AppContent() {
                 types={types}
                 isFiltering={isFiltering}
                 onToggleFavorites={toggleShowFavorites}
+                sortOrder={sortOrder}
+                onSortChange={handleSortChange}
               />
             </SectionErrorBoundary>
 

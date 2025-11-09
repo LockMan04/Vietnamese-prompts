@@ -107,7 +107,7 @@ const PromptCard = ({ prompt, onClick, hotIds = [], isFavorite, onToggleFavorite
 
       {/* Content */}
       <div className="flex-1 flex flex-col mb-2">
-        <h3 className="text-sm font-semibold text-gray-900 dark:text-white mt-1 mb-2 line-clamp-2 leading-tight min-h-[2.25rem]">
+        <h3 data-testid="prompt-card-title" className="text-sm font-semibold text-gray-900 dark:text-white mt-1 mb-2 line-clamp-2 leading-tight min-h-[2.25rem]">
           {prompt.title}
         </h3>
         <p className="text-xs text-gray-600 dark:text-gray-400 mb-2 line-clamp-2 leading-relaxed min-h-[1.75rem]">
